@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "work-001",
+    "title": "夜与雾",
+    "type": "serial",
+    "seriesId": null,
+    "seriesOrder": null,
+    "summary": "在战争的余烬中，两个人的相遇与别离，或许是最好的结局。",
+    "tags": {
+      "au": ["哨向", "现代"],
+      "cp_type": ["BL"],
+      "character_type": ["CP"],
+      "status": ["连载中"],
+      "rating": ["全年龄"]
+    },
+    "wordCount": 28000,
+    "createdAt": "2024-01-15",
+    "updatedAt": "2024-06-01",
+    "chapters": [
+      {
+        "id": "ch-001",
+        "title": "第一章 相遇",
+        "content": "街灯一盏接一盏亮起来。\n\n他站在公交车站的阴影里，风卷起几片落叶从脚边滑过。\n\n车来了。他走向前去，上车、投币，然后在后排找了个靠窗的位置坐下。\n\n今天是普通的一天。\n\n……",
+        "wordCount": 3200,
+        "updatedAt": "2024-06-01"
+      },
+      {
+        "id": "ch-002",
+        "title": "第二章 余烬",
+        "content": "第二天早晨，他在晨光中醒来。\n\n窗外的天空是浅灰蓝色，像一块洗得发白的旧布。\n\n他起床，走到窗边，拉开窗帘……",
+        "wordCount": 2900,
+        "updatedAt": "2024-06-01"
+      }
+    ]
+  }
+]
