@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: fanfic-backend
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm run backend
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
