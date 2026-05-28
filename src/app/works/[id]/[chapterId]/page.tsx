@@ -168,7 +168,7 @@ export default async function ChapterPage({ params }: PageProps) {
         </div>
       )}
 
-      <CommentSection workId={work.id} chapterId={chapterId} comments={comments} />
+      <CommentSection workId={work.id} chapterId={chapterId} initialComments={comments} />
     </div>
   )
 }
@@ -200,7 +200,7 @@ function OneshotView({ work, chapter, comments }: { work: any; chapter: any; com
         </nav>
       </div>
 
-      <CommentSection workId={work.id} comments={comments} />
+      <CommentSection workId={work.id} initialComments={comments} />
     </div>
   )
 }
