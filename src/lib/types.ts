@@ -16,8 +16,8 @@ export interface Work {
   id: string
   title: string
   type: 'serial' | 'oneshot'
-  seriesId?: string
-  seriesOrder?: number
+  seriesId?: string | null
+  seriesOrder?: number | null
   summary: string
   tags: Record<string, string[]>
   wordCount: number
