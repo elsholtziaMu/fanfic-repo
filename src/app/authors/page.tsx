@@ -8,9 +8,9 @@ export default function RecommendationsPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-medium text-emerald-950 mb-4">推荐作品</h1>
+      <h1 className="text-3xl font-medium text-emerald-950 mb-4">主厨推荐</h1>
       <p className="text-stone-600 mb-8">
-        我精选的一些作品，你可能会喜欢！
+        记得看tag啊别被创了
       </p>
       {works.length > 0 ? (
         <div className="grid gap-6">
@@ -19,7 +19,7 @@ export default function RecommendationsPage() {
               <Link href={`/works/${work.id}`} className="text-xl font-medium text-emerald-900 hover:text-emerald-800">
                 {work.title}
               </Link>
-              <p className="text-stone-600 mt-2">{work.summary}</p>
+              <p className="text-stone-600 mt-2 whitespace-pre-wrap">{work.summary}</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {Object.entries(work.tags).map(([categoryId, tags]) =>
                   tags.map(tag => (
