@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { getConfig } from '@/lib/data'
 
 export const metadata: Metadata = {
-  title: '同人作品站',
-  description: '同人小说存放站',
+  title: '木的粮仓',
+  description: 'Mu\'s Barn',
 }
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
                   作品总览
                 </Link>
                 <Link href="/authors" className="text-stone-700 hover:text-emerald-900 transition-colors">
-                  推荐作品
+                  主厨推荐
                 </Link>
                 <Link href="/about" className="text-stone-700 hover:text-emerald-900 transition-colors">
                   关于我
