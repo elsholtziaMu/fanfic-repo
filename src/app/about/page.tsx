@@ -21,7 +21,8 @@ export default function AboutPage() {
             <p className="text-gray-600">Archive of Our Own：
               <a href="https://archiveofourown.org/users/Elsholtzia_Mu" target="_blank" rel="noopener noreferrer" className="text-emerald-800 hover:text-emerald-700">
                 Elsholtzia_Mu
-              </a>
+              </a> 
+              &nbsp;&nbsp;(需要登录)
             </p>
           </section>
           <section>
