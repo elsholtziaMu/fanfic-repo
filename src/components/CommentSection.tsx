@@ -54,7 +54,7 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="输入昵称..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700"
             disabled={isSubmitting}
           />
         </div>
@@ -64,7 +64,7 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="写点什么..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700"
             rows={4}
             disabled={isSubmitting}
           />
