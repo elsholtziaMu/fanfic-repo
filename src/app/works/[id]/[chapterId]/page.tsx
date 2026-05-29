@@ -23,10 +23,28 @@ export async function generateStaticParams() {
   return params
 }
 
+function extractBody(html: string): { content: string; styles: string } {
+  const styleMatch = html.match(/<style[^>]*>([\s\S]*?)<\/style>/i)
+  const styles = styleMatch ? styleMatch[1] : ''
+  
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
+  if (bodyMatch) {
+    let content = bodyMatch[1]
+    content = content.replace(/<header>[\s\S]*?<\/header>/i, '')
+    return { content, styles }
+  }
+  const htmlMatch = html.match(/<html[^>]*>([\s\S]*?)<\/html>/i)
+  if (htmlMatch) {
+    return { content: htmlMatch[1].replace(/<head[^>]*>[\s\S]*?<\/head>/i, ''), styles }
+  }
+  return { content: html, styles }
+}
+
 export default async function ChapterPage({ params }: PageProps) {
   const { id, chapterId } = await params
-  const work = getWorkById(id)
-  
+  const decodedId = decodeURIComponent(id)
+  const work = getWorkById(decodedId)
+
   if (!work) {
     notFound()
   }
@@ -46,8 +64,8 @@ export default async function ChapterPage({ params }: PageProps) {
     )
   }
 
-  const currentChapter = chapterId 
-    ? work.chapters.find(ch => ch.id === chapterId)
+  const currentChapter = chapterId
+    ? work.chapters.find(ch => ch.id === decodeURIComponent(chapterId))
     : work.chapters[0]
 
   if (!currentChapter) {
@@ -60,16 +78,18 @@ export default async function ChapterPage({ params }: PageProps) {
 
   const seriesInfo = isSeriesWork && series ? getSeriesNavigation(work, series) : null
 
+  const bodyContent = extractBody(currentChapter.content)
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="card mb-6">
         <div className="flex justify-between items-center">
-          <Link href={`/works/${id}`} className="text-xl font-bold text-rose-600 hover:text-rose-700">
+          <Link href={`/works/${id}`} className="text-xl font-medium text-emerald-900 hover:text-emerald-800">
             {work.title}
           </Link>
-          <span className="text-gray-500">第 {currentIndex + 1} / {work.chapters.length} 章</span>
+          <span className="text-stone-500">第 {currentIndex + 1} / {work.chapters.length} 章</span>
         </div>
-        <h1 className="text-2xl font-bold text-gray-800 mt-2">{currentChapter.title}</h1>
+        <h1 className="text-2xl font-medium text-stone-800 mt-2">{currentChapter.title}</h1>
       </div>
 
       <div className="card mb-6">
@@ -95,20 +115,20 @@ export default async function ChapterPage({ params }: PageProps) {
       </div>
 
       {seriesInfo && (
-        <div className="card mb-6 bg-blue-50 border-blue-200">
+        <div className="card mb-6 bg-stone-100 border-stone-300">
           <div className="flex justify-between items-center flex-wrap gap-4">
             {seriesInfo.prev ? (
-              <Link href={`/works/${seriesInfo.prev.id}/${seriesInfo.prev.chapterId}`} className="text-blue-600 hover:text-blue-700">
+              <Link href={`/works/${seriesInfo.prev.id}/${seriesInfo.prev.chapterId}`} className="text-violet-700 hover:text-violet-800">
                 ← {seriesInfo.prev.title}
               </Link>
             ) : (
               <span />
             )}
-            <Link href={`/series/${series!.id}`} className="font-bold text-blue-700">
+            <Link href={`/series/${series!.id}`} className="font-medium text-violet-900">
               {series!.name} 系列
             </Link>
             {seriesInfo.next ? (
-              <Link href={`/works/${seriesInfo.next.id}/${seriesInfo.next.chapterId}`} className="text-blue-600 hover:text-blue-700">
+              <Link href={`/works/${seriesInfo.next.id}/${seriesInfo.next.chapterId}`} className="text-violet-700 hover:text-violet-800">
                 {seriesInfo.next.title} →
               </Link>
             ) : (
@@ -118,8 +138,28 @@ export default async function ChapterPage({ params }: PageProps) {
         </div>
       )}
 
-      <article className="card prose prose-lg max-w-none">
-        <div className="whitespace-pre-wrap leading-relaxed">{currentChapter.content}</div>
+      <article className="card">
+        {bodyContent.styles && (
+          <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
+        )}
+        {(currentChapter as any).beginNote && (
+          <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+            <h3 className="text-sm font-medium text-stone-600 mb-2">前言</h3>
+            <p className="text-stone-700 whitespace-pre-wrap">{(currentChapter as any).beginNote}</p>
+          </div>
+        )}
+
+        <div
+          className="prose prose-stone max-w-none"
+          dangerouslySetInnerHTML={{ __html: bodyContent.content }}
+        />
+
+        {(currentChapter as any).endNote && (
+          <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+            <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
+            <p className="text-stone-700 whitespace-pre-wrap">{(currentChapter as any).endNote}</p>
+          </div>
+        )}
       </article>
 
       <div className="card mt-6">
@@ -145,20 +185,20 @@ export default async function ChapterPage({ params }: PageProps) {
       </div>
 
       {seriesInfo && (
-        <div className="card mt-6 bg-blue-50 border-blue-200">
+        <div className="card mt-6 bg-stone-100 border-stone-300">
           <div className="flex justify-between items-center flex-wrap gap-4">
             {seriesInfo.prev ? (
-              <Link href={`/works/${seriesInfo.prev.id}/${seriesInfo.prev.chapterId}`} className="text-blue-600 hover:text-blue-700">
+              <Link href={`/works/${seriesInfo.prev.id}/${seriesInfo.prev.chapterId}`} className="text-violet-700 hover:text-violet-800">
                 ← {seriesInfo.prev.title}
               </Link>
             ) : (
               <span />
             )}
-            <Link href={`/series/${series!.id}`} className="font-bold text-blue-700">
+            <Link href={`/series/${series!.id}`} className="font-medium text-violet-900">
               {series!.name} 系列
             </Link>
             {seriesInfo.next ? (
-              <Link href={`/works/${seriesInfo.next.id}/${seriesInfo.next.chapterId}`} className="text-blue-600 hover:text-blue-700">
+              <Link href={`/works/${seriesInfo.next.id}/${seriesInfo.next.chapterId}`} className="text-violet-700 hover:text-violet-800">
                 {seriesInfo.next.title} →
               </Link>
             ) : (
@@ -174,10 +214,12 @@ export default async function ChapterPage({ params }: PageProps) {
 }
 
 function OneshotView({ work, chapter, comments }: { work: any; chapter: any; comments: any[] }) {
+  const bodyContent = extractBody(chapter.content)
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="card mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">{work.title}</h1>
+        <h1 className="text-2xl font-medium text-stone-800">{work.title}</h1>
       </div>
 
       <div className="card mb-6">
@@ -188,8 +230,28 @@ function OneshotView({ work, chapter, comments }: { work: any; chapter: any; com
         </nav>
       </div>
 
-      <article className="card prose prose-lg max-w-none">
-        <div className="whitespace-pre-wrap leading-relaxed">{chapter.content}</div>
+      <article className="card">
+        {bodyContent.styles && (
+          <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
+        )}
+        {chapter.beginNote && (
+          <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+            <h3 className="text-sm font-medium text-stone-600 mb-2">前言</h3>
+            <p className="text-stone-700 whitespace-pre-wrap">{chapter.beginNote}</p>
+          </div>
+        )}
+
+        <div
+          className="prose prose-stone max-w-none"
+          dangerouslySetInnerHTML={{ __html: bodyContent.content }}
+        />
+
+        {chapter.endNote && (
+          <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+            <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
+            <p className="text-stone-700 whitespace-pre-wrap">{chapter.endNote}</p>
+          </div>
+        )}
       </article>
 
       <div className="card mt-6">
@@ -212,7 +274,7 @@ function getSeriesNavigation(work: any, series: any) {
     .sort((a: any, b: any) => (a.seriesOrder || 0) - (b.seriesOrder || 0))
 
   const currentIndex = worksInSeries.findIndex((w: any) => w.id === work.id)
-  
+
   return {
     prev: currentIndex > 0 ? {
       id: worksInSeries[currentIndex - 1].id,

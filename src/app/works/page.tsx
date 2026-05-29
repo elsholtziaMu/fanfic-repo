@@ -35,7 +35,7 @@ export default function WorksPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-800">作品总览</h1>
+        <h1 className="text-3xl font-medium text-stone-800">作品总览</h1>
         <button
           onClick={() => setShowFilters(!showFilters)}
           className="btn-secondary"
@@ -51,12 +51,12 @@ export default function WorksPage() {
             placeholder="搜索作品标题..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="flex-1 px-4 py-2 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
           />
           <select
             value={workType}
             onChange={e => setWorkType(e.target.value as typeof workType)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="px-4 py-2 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
           >
             <option value="all">全部类型</option>
             <option value="serial">连载</option>
@@ -65,7 +65,7 @@ export default function WorksPage() {
           <select
             value={sortBy}
             onChange={e => setSortBy(e.target.value as typeof sortBy)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="px-4 py-2 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
           >
             <option value="updatedAt">按更新时间</option>
             <option value="createdAt">按创建时间</option>
@@ -82,11 +82,11 @@ export default function WorksPage() {
 
       {showFilters && (
         <div className="card">
-          <h3 className="font-bold text-gray-700 mb-4">标签筛选</h3>
+          <h3 className="font-medium text-stone-700 mb-4">标签筛选</h3>
           <div className="space-y-4">
             {categories.map(category => (
               <div key={category.id}>
-                <h4 className="font-medium text-gray-600 mb-2">{category.name}</h4>
+                <h4 className="font-medium text-stone-600 mb-2">{category.name}</h4>
                 <div className="flex flex-wrap gap-2">
                   {category.tags.map(tag => {
                     const isSelected = (selectedTags[category.id] || []).includes(tag)
@@ -96,8 +96,8 @@ export default function WorksPage() {
                         onClick={() => toggleTag(category.id, tag)}
                         className={`px-3 py-1 rounded-full text-sm transition-colors ${
                           isSelected
-                            ? 'bg-rose-500 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-emerald-800 text-stone-100'
+                            : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
                         }`}
                       >
                         {tag}
@@ -110,14 +110,14 @@ export default function WorksPage() {
           </div>
           <button
             onClick={() => setSelectedTags({})}
-            className="mt-4 text-sm text-rose-600 hover:text-rose-700"
+            className="mt-4 text-sm text-emerald-800 hover:text-emerald-900"
           >
             清除所有筛选
           </button>
         </div>
       )}
 
-      <div className="text-gray-600">
+      <div className="text-stone-600">
         共 {filteredWorks.length} 部作品
       </div>
 
@@ -126,7 +126,7 @@ export default function WorksPage() {
           <WorkCard key={work.id} work={work} />
         ))}
         {filteredWorks.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-stone-500">
             没有找到符合条件的作品
           </div>
         )}
@@ -142,23 +142,23 @@ function WorkCard({ work }: { work: Work }) {
     <div className="card hover:shadow-lg transition-shadow">
       <div className="flex justify-between items-start">
         <div>
-          <Link href={`/works/${work.id}`} className="text-xl font-bold text-rose-600 hover:text-rose-700">
+          <Link href={`/works/${work.id}`} className="text-xl font-medium text-emerald-900 hover:text-emerald-800">
             {work.title}
           </Link>
           <div className="flex gap-2 mt-1">
-            <span className={`text-xs px-2 py-0.5 rounded ${work.type === 'serial' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
+            <span className={`text-xs px-2 py-0.5 rounded ${work.type === 'serial' ? 'bg-emerald-100 text-emerald-800' : 'bg-stone-200 text-stone-700'}`}>
               {work.type === 'serial' ? '连载' : '单篇'}
             </span>
-            <span className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-600">
+            <span className="text-xs px-2 py-0.5 rounded bg-stone-100 text-stone-600">
               {totalWords.toLocaleString()} 字
             </span>
-            <span className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-600">
-              更新于 {new Date(work.updatedAt).toLocaleDateString()}
+            <span className="text-xs px-2 py-0.5 rounded bg-stone-100 text-stone-600">
+              更新于 {new Date(work.updatedAt).toLocaleDateString('zh-CN')}
             </span>
           </div>
         </div>
       </div>
-      <p className="text-gray-600 mt-3 line-clamp-2">{work.summary}</p>
+      <p className="text-stone-600 mt-3 line-clamp-2 whitespace-pre-wrap">{work.summary}</p>
       <div className="flex flex-wrap gap-2 mt-3">
         {Object.entries(work.tags).map(([categoryId, tags]) =>
           tags.map(tag => (

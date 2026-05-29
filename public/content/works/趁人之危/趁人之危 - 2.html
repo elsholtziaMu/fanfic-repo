@@ -1,0 +1,847 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>趁人之危 - 2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2fe93093-fb6c-803b-bc65-d4de08d1615e" class="page sans"><header><h1 class="page-title" dir="auto">趁人之危 - 2</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d2-8e00-fb25a4ab0c49" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8008-83bd-d5d4c5a794b4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-802a-b4c2-d303d473401e" class="">“我想好第一个条件了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803e-928b-ed622471938c" class="">周深冷不丁开口，像是自言自语一样对着手机说话。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ab-8898-c9ce4e094352" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805c-abab-c5a32d812cc0" class="">周可可在沙发的另一端抬起头，“嗯？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8024-b2e1-d18447519b05" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8077-a7a3-f1efe89f3765" class="">“你，”周深终于抬起眼，嘴角忍不住抽了抽，“禁止自慰。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803a-aaae-f577e0962d16" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8027-afa0-e113e1e37e1e" class="">周可可脸一垮，“你搞垄断啊！”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80da-80d0-d4dc6ad33e03" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801c-b987-f6d4a873a573" class="">“对啊，”周深托着下巴看他，“你也没说要求只能是一次性的，只是你举的例子都是一次性的。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80f0-9dc0-c08f9116be8f" class="">“这不算对规则咬文嚼字吧？我也没打算咬。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805b-a496-dcd46158212f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-802d-a8f8-c7f6414915bd" class="">“就是说如果真要咬的话，你还能提出颠覆游戏平衡的要求。”周可可无奈地看着他，“好的，当然可以。现在我是您忠实的储备粮了，你这个控制狂。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bf-b24a-c321483dda14" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bc-980c-ec8d3a0ef51d" class="">“顺带一提如果你主动求我帮你，我会无条件答应的。我人可好了。”周深笑眯眯地看着他。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8029-996b-dd48dc271011" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801a-80fe-d48c1d97914f" class="">周可可用“我看你是不想活了”的眼神看着周深，“你真的要我延伸这个话题吗？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-806f-ab87-e2386ab72e6d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-806c-978a-f9667c626afe" class="">“不要，”周深警告道，“你别逮到个话头就想算计我。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8094-b52d-c8fe3579a963" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8066-8c3c-ff13518103d0" class="">“那你现在就交易吗？”周可可勾着嘴角看他。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80be-bac9-f1f13b38ef40" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808c-a404-ec6fc40f3c9e" class="">“取决于你的条件。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80e2-82aa-e8dfc1dbe85b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d7-95ca-c7e09f2e88df" class="">“哎呀，真是骗不到你。”周可可躺到在沙发上，“我的条件是，在我问你的时候，你必须真实、详细、客观地描述你当下的身体感受。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8088-9933-e49b6ddcd0fd" class="">他像是在放空一样望着天花板，仿佛自己刚才只是说了晚饭想吃什么。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-802e-9267-da98d2bf3cb5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80e9-8562-d87c43c11b24" class="">周深脸色变了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8022-853b-eedbfaf59b55" class="">他几乎是瞬间明白了周可可的目的。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8095-ac73-d72aed21ba5b" class="">这个条件从根本上击溃了他一直以来对抗发情期的方法，他无法再通过忽略身体反应来压制欲望。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8038-a3cb-fec149c13523" class="">人对身体的感受会被注意力放大——光是在周深为了回答问题，向内扫描自己身体的那一刻，影响就开始体现了。紧接着，他要将那些混沌的、不体面的、连他自己都不愿细想的感受具象成精确的语言，端正地摆上台面。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805d-bf9f-f9d30aee4603" class="">周深咬了咬牙，声音压得很低。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8083-bce5-e09c8094a68a" class="">“你也太狠了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8080-98da-cb5937d457ad" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8051-a5b6-ceba24f5d3a9" class="">周可可笑着，“我觉得很公平啊。你控制我的身体，我控制你的思维。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8050-95ae-e3ff7ef663af" class="">“这就是第一个交易咯，你想它什么时候生效？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804b-85db-e061ae2400e3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b0-a25d-dbdefc0f06cf" class="">“我下一次刷牙的时候。”周深嘟囔道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8068-9270-c39e406039d3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8082-9bad-d93b000351cd" class="">“也就是我俩准备回房睡觉的时候。”周可可咧着嘴笑起来，“你怎么知道我不会在你刷完牙后问你，让你难受一整晚？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ae-b44d-e3d633c872db" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808d-8c08-ced8394f9fff" class="">周深无奈地看着他，“我可以以各种方式难受一整晚，不差这一个。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80f7-acbc-f2165a8d968e" class="">“一般来说发情期发展到这个时间，我已经是一滩烂泥了。现在还有脑子玩手机不要太爽。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8067-9b05-d37c435998b1" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8008-b929-f355c3854314" class="">周可可眯着眼睛思考片刻，“那如果你睡前不缺信息素，是不是也不用难受一晚上啊？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8091-8bcf-f0c15be7deb3" class="">如果没有足够的Alpha信息素，发情期Omega的欲望完全是无底洞，因此自我疏解还不如干熬过去。取得信息素后再独自解决欲望，这个乍一看有些荒谬的做法在他们这里倒是完全合理。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d5-8cce-ef404777da8d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8087-85c6-cea473c1d948" class="">周深当然也明白周可可在暗示什么。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8021-822b-f2c515ed4229" class="">“打住，停，斯到普，”他别过头，朝周可可翻出两个手掌心，“晚上的事情晚上再说好吗？不要让我现在想这些。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8070-9010-c3da3b1d6707" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8097-972f-cd792d41575c" class="">“就刚才那下不够你撑过夜吧，”周可可玩味地看着他，“手机好玩吗？你要干熬还是再做个交易？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80aa-9fc7-de3be4c0957b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b1-afdc-dfccf784d2bd" class="">“干熬，”周深不假思索地回答道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8045-9e9e-e8891b96fe76" class="">他不知道周可可脑子里还有多少折磨人的条件，尽可能减少交易的次数几乎是本能反应。但他看着对方脸上明显加深的笑意，忽然质疑起自己的决定。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8057-8a75-e57a43f355b8" class="">他真的要等到煎熬时才发起交易吗？他才刚刚经历了从轻微无力到无法思考的断崖，他要如何保证自己在相当痛苦的状态下说出能带来合理收支的条件？周深非常清楚，如果饭前周可可给他的那个吻是他用交易换来的，在他们都无法拒绝彼此的情况下，那将是一场极度不对等的交换。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808c-b009-f9fd6ec868c1" class="">“你脑子里还有多少那样的鬼点子？”他眯着眼问道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804d-83da-cd38cbf4b667" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8083-aad2-f218e5864034" class="">“取决于你的条件，”周可可摊开手。“这场游戏的强度和进程都由你掌控。你玩大的，我就舍命陪君子；你玩小的，我也不会为难你。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b4-b9f5-e55e6330b2ac" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8002-98d7-e5f5939f65e8" class="">“我那算玩大的？”周深难以置信地瞪大眼睛，“你……”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8064-9c50-cdc1871d3c42" class="">他吞回半句话。他一点也不想评价周可可的伪装能力或者被影响的程度。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8011-8328-c8a831577d40" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-800a-ad37-f1875cf6a31d" class="">“昂……中的吧，但是我那个条件的强度取决于我要怎么利用它。”周可可眨了眨眼，“别把我想得那么坏嘛！”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8088-88e3-c376400a8c73" class="">“你把交易的生效时间定在了实际灵活的刷牙时间，我当然也可以提出一个强度灵活的条件。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8052-99ee-cff8d7f265c0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80c1-990b-fb50cd1fe48d" class="">“这哪能一样呢……”周深叹了口气，“行吧，我会提出第二个交易，但不是现在。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ab-a747-e373e0a97955" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bf-9ff5-e22efb990783" class="">“不是现在？”周可可的嘴角又开始上扬，周深顿时大感不妙。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8051-8b9d-ed4cabfeea85" class="">“身体反应是滞后于激素的，”他摸了摸下巴，“虽然你一直拒绝谈论有暗示的话题，但是你有没有发现，你越来越容易联想了？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8012-a1c5-c4df18fda999" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8030-b87c-dfccee451acb" class="">“你能闻到是吗？”周深对自己的情热程度是公开信息有些不爽——想到自己之后还需要向周可可报告就更不爽了。“我现在闻起来像你刚做完饭的时候？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b2-ac7a-e86de4169146" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8080-8d2e-c1b2214a0647" class="">“对，像我刚进你房间的时候。所以我在等你突然‘𠳐’的一下……”周可可用手比了个爆炸的动作，“倒在沙发上。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-809e-bb4b-c5ea9290eebb" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804f-85e1-c30a3d00de4a" class="">周深表情复杂地看着周可可，“呃……其实一般不会那样，我‘𠳐’一下纯属意外。而且那时候你也没给我信息素啊。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8042-82a2-ff6df9abcb53" class="">“你体谅一下我的发情期里从没出现过Alpha。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ac-9a0d-eb238ad0a08e" class="">周可可又开始笑，周深有些恼羞成怒了，“你不许继续这个话题！”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ae-900e-d0be27f11e2a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a1-8262-f872e30743e7" class="">“是是是是是，”周可可满口答应，将自己挪到沙发边缘站起身。“你没事就行，那我先回房间了。跟你待在一起好难受啊。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8057-9947-d703fd3f8978" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8049-ac16-f970db56eaf3" class="">这是周可可第一次因为周深信息素的影响提出要离开，周深几乎要忘了自己的信息素会对他持续造成影响。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8062-b942-cd44820df33b" class="">没必要说出口。周深最后只是笑骂：</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d2-b50b-e073d69a7c7f" class="">“这么讨厌我就滚吧！”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8079-bb55-d60b698c57f3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803b-831f-f4fa318de4a5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80c1-9def-ec69cd15fe5e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a7-8443-d76dfec1f8fb" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a7-9d99-f1bebf7b2a7b" class="">浴室传来哗哗的水声，底下垫着换气扇的嗡鸣。周深坐在床角神游，想象如果自己的生活是一部动画的话，他现在应该在迷之脸红。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b9-a29f-e72dfe1271d3" class="">洗完澡后身上感觉清爽了许多，但这样的舒适不会持续太久。Alpha信息素的影响已经完全消退，他的每个动作都带来不必要的刺激，发紧的小腹也让他感到焦躁却无力发泄。他早已看不进字，连视频的画面也有些无法聚焦，只能放些歌来转移注意力。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8021-bab9-ca796c36b9fe" class="">他必须发起交易了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8083-8b1f-f0d85cf56aed" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8095-99ae-e497b7d354b7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d6-a59e-ec8c8a1877fd" class="">听到房间外门把转动的声音响起，周深缓缓站起身来，萎靡地扶着墙将自己挪到了浴室门口。才刚出来的周可可注意到他的靠近，转身面向他。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803d-87a5-e863de3c8da8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80af-96f6-ec62c68c34b2" class="">“怎么出来了？”周可可微微皱起眉。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80dd-984d-c6f9b506e833" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805a-81f3-d7d021ef7ab4" class="">“嗯……刷牙，”周深应道。“你能闻到吧？我现在这样，你问我已经没用了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-800b-9b1e-c5f43368e3cf" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80e0-86f5-f940bfc76bee" class="">岂止是能闻到，在一臂的距离下周可可甚至感觉在舌根尝到了酒的苦味。但他根本不需要信息素就能知道周深已经感觉非常不适。周深虽然思维跳跃，但绝不会这样每层逻辑都断链。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805d-9d8c-d956e966c88c" class="">周深抬手想要打开浴室的门，周可可伸手将他隔开，“我不问。你先别进，里面都是我信息素，通会风。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807e-958a-ecc78be24a06" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-809d-a07f-f1a98bf64b78" class="">“……哦。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bc-89a1-d7590718574a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80e5-a7c4-ca4c1e4b7782" class="">见周深没什么反应，周可可追问道，“你……你听懂没啊？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8083-bba3-c8ac7de7f598" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ee-9460-fc1523e88188" class="">周深傻乎乎点头，“听懂了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a9-8441-db9cfdca571c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fa-adb5-fa60425d619a" class="">周可可不放心地看着他，“我跟你进去吧。里面地滑，我怕你摔了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a2-b32d-fc99c1edc953" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805b-8814-dc2a04950397" class="">点头。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-800f-930d-c7461dbf27f8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8086-aed1-e3905e52313d" class="">好吓人。周可可不知所措地站在原地，高浓度的Omega信息素让他脑袋发晕，完全无法判断周深是真的意识模糊还是懒得说话。但他希望周深能多坚持一会，把睡前想做的事做完。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a1-84b0-c10dc9637546" class="">心软吃大亏啊，他不是来看周深惨状的吗？</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8005-9de4-ef1cab992ae5" class="">他上前一步，几乎能感觉到周深的呼吸。他从未嗅到过这样浓度的Omega信息素，周深已经快被情欲的气味浸透了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807a-bd51-d9fe50b82747" class="">“张嘴。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804e-b473-cff103bc904c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8063-8ae0-ec1fbaf8d932" class="">面前的人犹豫片刻，顺从地分开双唇。周可可收着力气轻轻贴上去，连手都不知道该往哪放，生怕哪个动作碰碎对方最后的外壳。舌尖触碰的瞬间双方都颤了一下，随即后颈被周深勾住，将他拉近。他的腺体因为他一整天半唤起的状态而充血红肿，此时被周深无意间压到一些，激得他不小心与对方磕了牙齿。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8039-a253-da6e6a9d148e" class="">他没醉过酒，现在应该是周可可目前为止的人生中最接近醉酒的一次。鼻腔里满是辛辣的气味，直冲脑门。头很晕，他不知道自己是否失去平衡，他们好像踉跄了几步，他没在意。他在脖子感觉到了自己的脉搏，胀胀地跳动。他可能也听到了自己的心跳声，但耳边更多的是周深的喘息。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8011-996b-f1376420930d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8053-bec9-fa88358c46d4" class="">不知从什么时候开始，对周深被情欲压垮的担忧转为了迫切的期待。他想把这个Omega圈进角落里，顺着他的脖子吻下去。想把膝盖卡进他的腿间，让他颤抖让他呻吟，享受他情欲决堤的瞬间。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8072-8aa7-e18bb84a5e85" class="">这真的是他要的吗？</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8050-9ca3-d440c437ea68" class="">太糟糕了。周可可狠狠掐了一把自己的大腿。不可以。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807a-9e7c-c5daf34545ba" class="">他逃也似的断开了这个吻，艰难找回自己后才发现自己在无意识间放出了些信息素。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d5-96b9-f30c140d5ead" class="">他停下了，好在他在浓度高到会给周深添麻烦前停下了。但周深一定已经嗅到了，嗅到了他在那一刻的动摇。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-800f-b34e-e288919859ee" class="">周可可闭着眼调整呼吸，不敢看周深。后脑的头发被轻轻抓了抓，指甲挠过头皮发出了粗砺的声音。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fd-8ba9-f43c01d471e7" class="">“……对不起。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8010-acac-dc2cdfa8a48e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804a-b3cd-de3245bbcb0f" class="">周深继续着手上的动作，声音很轻，“为什么要道歉呢？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8039-985b-efeec2b0ca3d" class="">“万一我就是等着你失控，想赶紧赢呢？”他捧住周可可的脸颊，后者不得不睁眼看他。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805a-a354-d52c81719ab2" class="">“真可惜呀，就差一点。”周深弯着依然迷蒙的眼睛微微笑道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801a-a22a-c17c9d15fb14" class="">“哦，还有，你牙白刷了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fc-8941-e552a0b62a01" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8096-a184-e69976020c09" class="">周可可沉默地看着周深。发情期的深入确实让周深变笨了，连善意的谎言都演得如此拙劣。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8012-87bd-c7a9f103b791" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8096-b86d-ef2c5e43d9bc" class="">周深松开手，“我特别想要你的时候，闻起来也像一只绝望的小狗吗？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fb-9df2-e8c91932e14f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805e-88e5-c02f419adf48" class="">我闻起来像小狗吗？</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80f3-b322-ca2f2661d63c" class="">“不是。”周可可一有机会就移开了视线，“你就是，变得特别香，有一点腥的甜味。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-802a-ae65-fe04022b20a2" class="">“但是闻起来挺可怜的。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b1-b54e-ea13bd5a5da5" class="">“……的酒鬼，”他补充道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808a-97a3-cf97b6b42e95" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-802e-92d6-e7da9e951f54" class="">“哦，那你一直挺香挺甜的。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8050-abbd-e421cdedb845" class="">“我现在跟你吻我之前有什么区别？除了清醒了？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804d-aa35-e601f47f9568" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80c3-9eb7-fc5d7f78c7dd" class="">“酒味淡了……但是更香了。”周可可不敢细说。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8081-9fd0-ffab9ca99cf7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a1-9993-ca1a2f46591c" class="">“对啊，”周深笑眯眯地凑到周可可耳边，“你按着我亲的时候，我下面全湿了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8041-a65b-d878e9bcb49e" class="">“不管你刚才在想什么，我不介意把它实现。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8017-9d87-df6f134ff299" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8071-8777-e9ce30570d83" class="">周可可愣了几秒。他知道前句是真的——他能从信息素猜到但从未细想，更没想到周深会直接说出来。也不知道周深发情期结束会不会后悔。但他承认周深达到目的了，他在听到这句话的时候差点又没控制住信息素，要是真放出来了就太丢人了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fd-b796-d39486699dc2" class="">至于后面的，还是不要信比较好。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8067-b5b3-d9722dee2fae" class="">他最终挤出一句话，“那要交易。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fd-a8b2-c92bec1ef761" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80cf-854b-eef53a36af2f" class="">“哦，那我介意了，本来还想再占你点便宜呢。”周深利索地后退一步，转身打开了浴室的门。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8038-85a9-c293b9a11913" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8091-a410-f599c6f799c3" class="">“我很难说那算占我便宜，”周可可干巴巴说着，跟在周深身后。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8031-84b0-ce7e23f3523b" class="">他关掉呼呼作响的换气扇，挤到洗手台前。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801f-b82f-d38c04bdb448" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8007-b3e5-db362cccbeb5" class="">“是吗，”周深低头捣鼓着自己的牙具，“因为我知道你不会想些很暴力的东西，那太没品了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fa-a183-c50ac3ae1781" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a1-9ee7-d0d641ef8942" class="">“你枕么那么肯定？”周可可咬着牙刷问道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8064-bdb3-fd69b9260cef" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8027-85dd-c747a5386307" class="">Alpha想暴力的东西的时候，当然不可能混着那种可怜巴巴的气味。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8023-8679-e1173f314741" class="">周深借刷牙的动作不说话，看着镜子里的周可可。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bd-bde4-fa9bd4b8fe4f" class="">说出来这家伙得炸毛吧。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8081-bb4d-e172b21ab569" class="">他吐掉口中的泡沫，“因为你不一定能打得过我。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ac-a80c-e8622109e994" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8033-b61a-f14198758d26" class="">周可可还在被牙膏禁言，只能翻出一个白眼。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8000-b013-d92db0448fcb" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803b-9dee-dabc52f631d5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8014-b7c5-d150c5c89364" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8094-9096-ec9820fd3d70" class="">在周深发消息前，周可可已经辗转反侧很久了，被叫走反而是一种解脱。他以为他们刷完牙就要做交易，但周深趁他还没刷完的时候就先回了房间，房门紧闭。他不懂什么要求会需要周深算计他将尽一小时，但如果有，那他一定是完蛋了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8031-a2b8-fda080cee2d0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-802c-9118-e91f76149df5" class="">事实上是没有。周可可敲开房门时，屋内的信息素淡得惊人，让他一瞬间惋惜自己的鼻子在被摧残一整天后终于坏掉了。片刻后他才感觉到卧室内比外面微凉的空气。是才刚开过窗。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805c-b990-f2864b4d04d4" class="">坐在床沿的周深比周可可预料的要放松许多，甚至可以说是慵懒。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80f2-96bb-c40b7587f874" class="">傻子也该知道是怎么回事了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80c7-9046-d30331caa949" class="">周可可叹了口气，“世风日下，只许州官放火，不许百姓点灯呐。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b0-807f-f0183cab4949" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8006-9fa8-f5d383695b96" class="">周深眨了眨眼，“我没有理由不放啊，你都好心送我信息素了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803e-bc93-cb80a8174162" class="">他笑道，“哎，你知道吗，你兴奋的时候连口水里的信息素都会变浓。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8090-9ebd-d9e70aad5d8e" class="">“我可太有理由折腾你了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8007-8abd-f60c6109c712" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8004-9ebd-d65615d42906" class="">“以后不会那么好心了，”周可可嘟囔道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80c7-9939-eb031104de4c" class="">“来吧，你这次要怎么折腾我？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ce-a44a-d7f3137f7e79" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ef-b6fc-c1ecaa6e43ff" class="">在这个话题上周深的眼神倒是躲闪了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b9-a4d9-c2a0f508d532" class="">“呃，我想你直接，把信息素，涂我腺体上。期间你可以不用控制信息素。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8086-9f76-c314e69dc96c" class="">“就是，随便以什么方式，都行……”他的声音越来越小。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fb-a5bb-f2bb91eb60d9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8010-b167-c02ca3b36a39" class="">舔腺体呗，绕这么大个弯。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808b-a18d-d6d875d97e9a" class="">也不是没有更优雅的方法，但除了徒增麻烦外，对双方的效果跟直接舔大差不差。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d7-abd4-ef4548817196" class="">腺体吸收信息素的效率比口腔高，周深会有这个要求也是意料之外情理之中。只是被刺激腺体是不可能没有感觉的，更何况是发情期中的Omega，这应该是周深一开始扭扭捏捏的原因。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8021-ab1b-f1982d3f498d" class="">还有从腺体吸收大量信息素带来的心理影响。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804c-8b6f-d7ed6151d4e1" class="">“这个效果接近临时标记了，你没问题吗？”周可可犹豫道。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8034-8c78-e94da5103e54" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804b-b259-c3d7dba4427b" class="">“反正结束后就睡觉了。这已经是我目前能想出来最体面的办法了。”周深无奈地看着他，“我大概明天晚上或者凌晨，发情期会到最高峰。要是没有这个浓度的话，我明早又要起不来床了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bc-9a50-c724c2e86281" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807a-a17c-d6ef8f5b21e6" class="">“早？”周可可被分散了注意力。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8050-8174-de3c6e1b2ae7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d0-b9b7-f6c4a711015d" class="">“……中午。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8022-8912-f412e00209fa" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8041-8ce5-d780a6cd3531" class="">反正周可可是不相信周深做完交易就会睡觉的。“放火”和玩手机里至少有一个会让周深熬夜，只是没必要说出来，因为这与他无关。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80f5-a99d-fbcb59b9915a" class="">“好，那我的条件是，我来决定这场交易什么时候结束——当然我不会搞出一个离谱的时长。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8014-a78b-f0b13ab11141" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-806c-9cea-e8d3898a2bbc" class="">周深愣住了，思索片刻后他眯起眼睛，“你要在这个距离下跟我拼耐性？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8078-9c8a-de0263182b42" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80cf-b7fd-c860799ec435" class="">“这不好玩吗？”周可可摊开手，“虽然我可能会因为点不了灯睁眼到天亮，但是你也可能一整夜都觉得身边空空的，做梦都是我。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8093-b69c-fbb78bd32e22" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8066-aa09-e480fb113c4c" class="">“我去，”周深皱起脸，“太恶劣了，有点变态了你。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b8-ba36-cc504d991ab7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801f-8dba-ed7373468a0f" class="">“好啦，”周可可无视了周深的控诉，“我不搞乱七八糟的，男神需要我怎么舔你？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8020-a398-cf584e0ac0f5" class="">周深投来一个茫然的眼神，周可可瞪大眼睛，“你不会没想过我们能以什么体面的姿势干这个吧？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a1-90c9-f9f4ad1e50a5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-804f-b69b-cc3d2afdd499" class="">周深心虚地移开视线，“忘记了……”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8016-9836-eb51698eff65" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808a-a1a3-cb715c2bc3b2" class="">“那你，想一想吧，”周可可有些好笑地看着他。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8054-ada6-f9b2700b3af9" class="">没有人会没事舔Omega的腺体，两人的涉猎范围内会出现这个动作的都是在性事当中，那姿势当然不体面。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8075-86a6-d9b6f5986076" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8062-bf48-e1ad0bd90022" class="">“……体面不了，”周深垮着脸，“体面的姿势我撑不住。就两个人都侧躺着吧，我裹层被子。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80c3-8a84-d91a5c7a6d16" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80f9-89d4-fca656b56733" class="">“好，”周可可向床上示意，“你要开始吗？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-808f-a8b9-ca95d1916f67" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8045-9d3d-f45c8cbfcaf6" class="">周深回头看向自己的床铺，像是下定了什么决心，深吸了一口气。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b3-b650-e97e09d4db0a" class="">他将双腿收上床，挪到床头，拍了拍身边的空位。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801c-ae96-e571bebb4813" class="">“来吧。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80bb-882b-c1bb27f0df2d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805c-ac1b-e66a26b12d64" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8081-91b5-df8e5fc424b7" class="">完全暴露在空气中，贴着一个背向自己、盖着被子的人实在是太奇怪了。周可可感觉自己像这张床的入侵者——他本来就是，但是结合他要做的事，他确实觉得自己像个变态。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80e9-9d5e-fa8e1ce87cb3" class="">不，又不是他自愿要这样的。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8027-82d0-d91221d06dab" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ad-8456-e875c8725b4e" class="">周深只把被子盖到了腰，周可可也不敢擅自理解为露出来的部分都是他可以碰的。他耸着肩把手搭上了对方的肩头，却被抓住放到腰上拍了拍。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80dc-871c-ecc1f46d5f44" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807a-8a10-cf45ce2f37ee" class="">“你这么缩着小心抽筋。”周深叹了口气，“主意都打到我屁股上了，还只敢摸我肩膀？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8055-adef-db815eb7312a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80a7-9835-ed62fefe8d8a" class="">哦，那我摸下屁股。周可可忍住没把玩笑话说出来，他觉得自己已经看上去够变态了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fa-9fb5-e7a328085eb1" class="">他凑得更近了些，下侧的手臂挤在两具身体和床垫间，胸口微微碰到周深的肩胛骨。口鼻前就是周深红肿的腺体，信息素被周可可的呼吸带起，又吸入身体。周深的信息素已经没有早些时候那样强烈，连发情期以来一直混在酒香中焦躁的气味都几乎找不到了，取而代之的是有些催眠的满足感。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8076-8156-cc338fd4a989" class="">人道主义援助过头了，周可可总结到。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ef-afdd-ebd4a4449536" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ac-a471-d1c0bd317455" class="">所以他要开始人道主义加害了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807b-b125-f8dc5a876f1e" class="">“哎，”周可可用鼻尖点了点周深腺体旁的皮肤，“那我开始了。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80cf-8892-ee6241e701d0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801a-89ae-c079a74940e0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ed-a920-cfe8c827c9ac" class="">呼吸落在周深后颈，软软地扑上来，在他的皮肤上留下一小片温热。周深忍住了缩瑟的冲动，却在下一秒猛地绷紧了肩膀。触感落下来，一瞬间燃起的麻沿着脊椎细细密密地炸开，最终堆积在后腰。他攥紧了枕头，指节陷进柔软的布料里，屏住呼吸防止自己叫出声来。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8015-854b-c089f22a5a3e" class="">周深在片刻的失神后找回了自己。酸？痒？他说不清麻意散去后的感觉，不是疼痛但也绝不是快感。这种奇异的刺激找不到出口，渐渐堆积起来，最终在他胸腔里横冲直撞。身体不断在躲闪和忍耐间对抗。肩膀和腰腹的肌肉一阵阵收紧，这已经是他能做到的最大限度的挣扎。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-807a-9da6-db5410c084fd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8043-83b2-c9e82e4402a3" class="">周深在混乱的呼吸间嗅到一丝巧克力的甜香。身体欣喜地迎接Alpha信息素的到来，期待这个气味会像这日的其它时候一样，温和地抚平自己的痛苦。紧绷的神经几乎是贪婪地松懈下来。堵在胸口不断累加的刺激一丝丝化开，缓缓流淌下沉，却没有消失。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801c-af53-f61c8bf8511e" class="">Alpha的费洛蒙不断进入周深的身体，两种形式的信息素在他体内汇集碰撞，他那难以名状的痛苦逐渐转成另一种更熟悉的感觉。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-806e-a7cb-ff77d7102c88" class="">身体开始发软，他明有力气抵抗却无法调动自己的四肢。后颈腺体的触感在他察觉前成了蚀骨的酥麻。舌尖每一次扫过，每一次有意无意的压迫，都给他带来一阵颤栗。直到这一刻，周深才有了他们在进行性事其中一环的实感。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ed-99d1-e62b5c460bf5" class="">无处发泄的感受再一次在他的身体里积压。呼吸变为喘息，喘息也快要变得无法控制。周深抬手捂住了嘴，手臂却无力地颤抖着，最后只能咬住一根手指，把声音压回喉咙。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80b4-8fae-f0afb93003e3" class="">太过了，他迷迷糊糊想，他到底要玩到什么时候。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8009-a5e5-c5063d262eca" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ac-9eea-def534dbe161" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801c-b3e7-ea381a172ffe" class="">腰不能随便给别人摸是有原因的。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fe-a042-e6cf732c1693" class="">周可可猜，周深根本不知道自己的腰几乎暴露了他所有的反应。跟随呼吸起伏的肋骨、意料外的刺激带来的颤抖、难耐扭动时共舞的肌肉，甚至下意识夹腿时绷紧的侧腰，都将他自以为克制的肢体语言出卖得干干净净。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8082-ae51-c6c15e25256d" class="">他能嗅出周深在忍耐什么。他知道周深一开始的难受和无措，在情欲被引动后化为了快感。而Alpha不可能在情动的Omega面前独善其身。周可可仿佛能同周深一起感受到腺体上的快感，但这一丝欢愉的气味在更加浓烈的情欲的甜香前根本不值一提。他的心跳和呼吸都开始加速，他知道周深一定也能感觉到自己已经开始从口中呼吸，但他没有精力去控制自己的这一点失态。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ad-83a7-e38d6952bfcd" class="">欲望在周深信息素的牵引下不断爬升，本能不断驱使他去为面前的Omega催化更多的快乐，但他此刻做的已经是他们同意的极限。阴茎胀得难受，时不时抵着他的腿根无法控制地抽动。周可可不得不停下舔舐的动作，别扭地单手调整自己的睡裤。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8039-bddc-fc72733e54a7" class="">当他将手放回周深腰间时，指尖被抓住，轻轻捏了捏。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80d3-b5aa-e2f074c34c9e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8053-9e91-de3c4e204760" class="">周深花了些时间调整自己的呼吸，但开口时依然是沙哑的声音。“还好吗？你是不是该求我了？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8029-8252-d610ef1baa2d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-805c-9f89-e9edf1a4616d" class="">周可可将脸从腺体前别开，脸颊贴着周深的背。鉴于周深此刻散发出的信息素，他觉得对方一开口就是这个问题，其实是已经有点受不了了。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8070-aa30-e4f958278f33" class="">“不是你求我？”周可可挤出一声笑，“你只会比我更难受。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80ed-9ea4-c75d4ec11675" class="">他们的老祖宗在进化的时候似乎从未想过Omega的发情期会有Alpha陪同却不做爱的情况。发情期的欲望和敏感本来就不该是清醒地承受的，执意这么做的周深当然要付出代价。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8057-a182-cb2491c27c39" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8096-9b5d-fce38066967a" class="">周深拖着声音附和道，“对呀，所以你要不要求求我，让我们俩别再受罪了？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8015-85f9-e07b6e64cadb" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-806e-8a55-f98c46b42828" class="">当然不。周可可不会让游戏这么早结束，但也不会因此错失进攻的机会。</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-803f-b6c4-cf45a9e067d3" class="">“那你先告诉我，你在受什么罪吧。”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80e0-93ba-d2c723dacaa3" class="">“你现在是什么感觉？”</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-800f-9f47-ff05624ce4af" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8008-8a05-fd9a318a23b1" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-8026-a34b-dec1ff3803fd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-80fe-b482-f1db07dbe919" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-801c-b244-e415cbb25c5b" class="">tbc.</p></div><div style="display:contents" dir="auto"><p id="2fe93093-fb6c-806b-9ea0-fe7979da1382" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

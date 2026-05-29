@@ -44,11 +44,11 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
 
   return (
     <div className="card mt-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">评论区</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-4">留言区</h2>
       
       <form onSubmit={handleSubmit} className="mb-6 p-4 bg-gray-50 rounded-lg">
         <div className="mb-3">
-          <label className="block text-sm font-medium text-gray-700 mb-1">昵称</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">如何称呼你？</label>
           <input
             type="text"
             value={author}
@@ -59,7 +59,7 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
           />
         </div>
         <div className="mb-3">
-          <label className="block text-sm font-medium text-gray-700 mb-1">评论内容</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">留言</label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -74,7 +74,7 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
           className="btn-primary"
           disabled={isSubmitting || !author.trim() || !content.trim()}
         >
-          {isSubmitting ? '发送中...' : '发布评论'}
+          {isSubmitting ? '发送中...' : '发布留言'}
         </button>
       </form>
 
@@ -91,7 +91,7 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
           ))}
         </div>
       ) : (
-        <p className="text-gray-500">暂无评论</p>
+        <p className="text-gray-500">暂无留言</p>
       )}
     </div>
   );
