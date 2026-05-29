@@ -33,5 +33,5 @@ h1, h2, h3, h4 {
 }
 
 a {
-  @apply text-emerald-900 hover:text-emerald-800 transition-colors;
+  @apply text-emerald-900 hover:text-emerald-800 transition-colors no-underline;
 }

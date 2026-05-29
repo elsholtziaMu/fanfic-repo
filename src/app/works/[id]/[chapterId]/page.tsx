@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 
 function extractBody(html: string): { content: string; styles: string } {
   const styleMatch = html.match(/<style[^>]*>([\s\S]*?)<\/style>/i)
-  const styles = styleMatch ? styleMatch[1] : ''
+  let styles = styleMatch ? styleMatch[1] : ''
+  styles = styles.replace(/text-decoration:\s*underline;?/gi, 'text-decoration: none;')
   
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
   if (bodyMatch) {
