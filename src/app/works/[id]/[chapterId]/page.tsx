@@ -1,7 +1,19 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getWorkById, getSeriesById, getWorks, getCommentsByWorkId } from '@/lib/data'
+import { getWorkById, getSeriesById, getWorks } from '@/lib/data'
 import CommentSection from '@/components/CommentSection'
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3003/api'
+
+async function getCommentsFromAPI(workId: string) {
+  try {
+    const res = await fetch(`${API_BASE_URL}/comments/${workId}`, { cache: 'no-store' })
+    if (!res.ok) return []
+    return await res.json()
+  } catch {
+    return []
+  }
+}
 
 interface PageProps {
   params: Promise<{ id: string; chapterId?: string }>
@@ -39,7 +51,7 @@ export default async function ChapterPage({ params }: PageProps) {
   const isOneshot = work.type === 'oneshot'
   const isSeriesWork = !!work.seriesId
   const series = isSeriesWork ? getSeriesById(work.seriesId!) : null
-  const comments = getCommentsByWorkId(work.id)
+  const comments = await getCommentsFromAPI(work.id)
 
   if (isOneshot) {
     const chapter = work.chapters[0]
