@@ -9,7 +9,8 @@
     "lint": "next lint",
     "backend": "node backend/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run backend\"",
-    "import": "node scripts/import-html.js"
+    "import": "node scripts/import-html.js",
+    "download-comments": "node scripts/download-comments.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
