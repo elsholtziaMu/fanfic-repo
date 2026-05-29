@@ -7,21 +7,7 @@ interface PageProps {
   params: Promise<{ id: string; chapterId?: string }>
 }
 
-export async function generateStaticParams() {
-  const works = getWorks()
-  const params: { id: string; chapterId?: string }[] = []
-  works.forEach(work => {
-    if (work.chapters.length > 0) {
-      params.push({ id: work.id })
-      work.chapters.forEach(ch => {
-        params.push({ id: work.id, chapterId: ch.id })
-      })
-    } else {
-      params.push({ id: work.id })
-    }
-  })
-  return params
-}
+
 
 function extractBody(html: string): { content: string; styles: string } {
   const styleMatch = html.match(/<style[^>]*>([\s\S]*?)<\/style>/i)
