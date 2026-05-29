@@ -12,13 +12,23 @@ async function readHtmlFile(filePath) {
     const dom = new JSDOM(content);
     const document = dom.window.document;
 
-    let textContent = '';
-    const body = document.querySelector('body');
-    if (body) {
-      textContent = body.textContent || '';
-    } else {
-      textContent = document.textContent || '';
-    }
+    const body = document.querySelector('body') || document;
+
+    const callouts = body.querySelectorAll('.callout');
+    callouts.forEach(el => el.remove());
+
+    let textContent = body.textContent || '';
+
+    const chineseChars = textContent.match(/[\u4e00-\u9fff]/g) || [];
+    const chineseOnly = chineseChars.join('');
+
+    const englishText = textContent.replace(/[\u4e00-\u9fff]/g, ' ');
+    const englishWords = englishText.match(/[a-zA-Z]+/g) || [];
+    const englishWordCount = englishWords.length;
+
+    const punctuationRemoved = textContent.replace(/[^\w\u4e00-\u9fff]/g, '');
+    const charsWithoutPunct = punctuationRemoved.match(/[\u4e00-\u9fff]|[a-zA-Z]+/g) || [];
+    const wordCount = chineseChars.length + englishWordCount;
 
     const title = document.querySelector('title')?.textContent ||
                   path.basename(filePath, '.html');
@@ -26,7 +36,7 @@ async function readHtmlFile(filePath) {
     return {
       content: content,
       textContent: textContent.trim(),
-      wordCount: textContent.replace(/\s+/g, '').length
+      wordCount: wordCount
     };
   } catch (error) {
     console.error(`Error reading HTML file ${filePath}:`, error.message);
