@@ -19,14 +19,14 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!author.trim() || !content.trim()) return;
+    if (!content.trim()) return;
 
     setIsSubmitting(true);
     try {
       const response = await fetch(`${API_BASE_URL}/comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ workId, chapterId, author, content }),
+        body: JSON.stringify({ workId, chapterId, author: author.trim() || '访客', content }),
       });
 
       if (response.ok) {
@@ -72,7 +72,7 @@ export default function CommentSection({ workId, chapterId, initialComments }: C
         <button
           type="submit"
           className="btn-primary"
-          disabled={isSubmitting || !author.trim() || !content.trim()}
+          disabled={isSubmitting || !content.trim()}
         >
           {isSubmitting ? '发送中...' : '发布留言'}
         </button>
