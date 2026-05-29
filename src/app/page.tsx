@@ -14,11 +14,14 @@ export default function HomePage() {
       <section className="card">
         <h2 className="text-xl font-medium text-stone-800 mb-4">欢迎来到 {config.title}</h2>
         <p className="text-stone-600 mb-6">{config.subtitle}</p>
-        <div className="flex gap-4">
-          <Link href="/works" className="btn-primary">
-            浏览作品
+        <div className="flex flex-col gap-4">
+          <Link href="/authors" className="btn-primary text-center">
+            主厨推荐
           </Link>
-          <Link href="/about" className="btn-secondary">
+          <Link href="/works" className="btn-secondary text-center">
+            作品总览
+          </Link>
+          <Link href="/about" className="btn-secondary text-center">
             关于我
           </Link>
         </div>
