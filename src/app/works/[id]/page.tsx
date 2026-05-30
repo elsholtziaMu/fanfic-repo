@@ -60,6 +60,12 @@ export default async function WorkDetailPage({ params }: PageProps) {
         <p className="text-stone-600 whitespace-pre-wrap">{work.summary}</p>
       </div>
 
+      {work.warning && (
+        <div className="card mb-6 bg-amber-50 border-amber-200">
+          <p className="text-amber-800 whitespace-pre-wrap">{work.warning}</p>
+        </div>
+      )}
+
       <div className="card">
         <h2 className="text-xl font-medium text-stone-800 mb-4">目录</h2>
         {work.chapters.length > 0 ? (

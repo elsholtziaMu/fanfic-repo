@@ -19,6 +19,7 @@ export interface Work {
   seriesId?: string | null
   seriesOrder?: number | null
   summary: string
+  warning?: string
   tags: Record<string, string[]>
   wordCount: number
   createdAt: string
