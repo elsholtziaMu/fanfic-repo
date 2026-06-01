@@ -1,0 +1,16 @@
+[
+  {
+    "type": "work",
+    "workId": "趁人之危",
+    "title": "AO博弈",
+    "blurb": "两只黑白千层蛋糕互相算计又互相照顾的故事。",
+    "order": 1
+  },
+  {
+    "type": "series",
+    "seriesId": "series-各取所需",
+    "title": "互攻感大卡车",
+    "blurb": "纯爱炮友情。爱有多纯炮就有多野。",
+    "order": 3
+  }
+]

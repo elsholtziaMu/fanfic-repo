@@ -28,7 +28,7 @@ export default function RootLayout({
                 <Link href="/works" className="text-stone-700 hover:text-emerald-900 transition-colors">
                   作品总览
                 </Link>
-                <Link href="/authors" className="text-stone-700 hover:text-emerald-900 transition-colors">
+                <Link href="/recommendations" className="text-stone-700 hover:text-emerald-900 transition-colors">
                   主厨推荐
                 </Link>
                 <Link href="/about" className="text-stone-700 hover:text-emerald-900 transition-colors">

@@ -15,7 +15,7 @@ export default function HomePage() {
         <h2 className="text-xl font-medium text-stone-800 mb-4">欢迎来到 {config.title}</h2>
         <p className="text-stone-600 mb-6">{config.subtitle}</p>
         <div className="flex flex-col gap-4">
-          <Link href="/authors" className="btn-primary text-center">
+          <Link href="/recommendations" className="btn-primary text-center">
             主厨推荐
           </Link>
           <Link href="/works" className="btn-secondary text-center">

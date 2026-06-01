@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Work } from '@/lib/types'
 import { getWorks, getTagCategories, filterWorks, sortWorks } from '@/lib/data'
+import WorkCard from '@/components/WorkCard'
 
 export default function WorksPage() {
   const works = getWorks()
@@ -129,48 +130,6 @@ export default function WorksPage() {
           <div className="text-center py-12 text-stone-500">
             没有找到符合条件的作品
           </div>
-        )}
-      </div>
-    </div>
-  )
-}
-
-function WorkCard({ work }: { work: Work }) {
-  const totalWords = work.chapters.reduce((sum, ch) => sum + ch.wordCount, 0)
-
-  return (
-    <div className="card hover:shadow-lg transition-shadow">
-      <div className="flex justify-between items-start">
-        <div>
-          <Link href={`/works/${work.id}`} className="text-xl font-medium text-emerald-900 hover:text-emerald-800">
-            {work.title}
-          </Link>
-          <div className="flex gap-2 mt-1">
-            <span className={`text-xs px-2 py-0.5 rounded ${work.type === 'serial' ? 'bg-emerald-100 text-emerald-800' : 'bg-stone-200 text-stone-700'}`}>
-              {work.type === 'serial' ? '连载' : '单篇'}
-            </span>
-            <span className="text-xs px-2 py-0.5 rounded bg-stone-100 text-stone-600">
-              {totalWords.toLocaleString()} 字
-            </span>
-            <span className="text-xs px-2 py-0.5 rounded bg-stone-100 text-stone-600">
-              更新于 {new Date(work.updatedAt).toLocaleDateString('zh-CN')}
-            </span>
-          </div>
-        </div>
-      </div>
-      <p className="text-stone-600 mt-3 whitespace-pre-wrap">{work.summary}</p>
-      <div className="flex flex-wrap gap-2 mt-3">
-        {work.tags.relationship && work.tags.relationship.map(tag => (
-          <span key={`relationship-${tag}`} className="px-2.5 py-1 rounded-full text-xs bg-violet-100 text-violet-800 border border-violet-300">
-            {tag}
-          </span>
-        ))}
-        {Object.entries(work.tags).filter(([categoryId]) => categoryId !== 'relationship').map(([categoryId, tags]) =>
-          tags.map(tag => (
-            <span key={`${categoryId}-${tag}`} className="tag">
-              {tag}
-            </span>
-          ))
         )}
       </div>
     </div>

@@ -1,10 +1,11 @@
-import { SiteConfig, TagCategory, Work, Series, Author, Comment } from './types'
+import { SiteConfig, TagCategory, Work, Series, Author, Comment, Recommendation } from './types'
 import configData from '@/data/config.json'
 import tagsData from '@/data/tags.json'
 import worksData from '@/data/works.json'
 import seriesData from '@/data/series.json'
 import authorsData from '@/data/authors.json'
 import commentsData from '@/data/comments.json'
+import recommendationsData from '@/data/recommendations.json'
 
 export function getConfig(): SiteConfig {
   return configData as SiteConfig
@@ -49,6 +50,10 @@ export function getComments(): Comment[] {
 
 export function getCommentsByWorkId(workId: string): Comment[] {
   return (commentsData as Comment[]).filter(c => c.workId === workId)
+}
+
+export function getRecommendations(): Recommendation[] {
+  return (recommendationsData as Recommendation[]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 }
 
 export function filterWorks(

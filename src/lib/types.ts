@@ -57,3 +57,19 @@ export interface Comment {
   content: string
   createdAt: string
 }
+
+export type Recommendation =
+  | {
+      type: 'work'
+      workId: string
+      title: string
+      blurb: string
+      order?: number
+    }
+  | {
+      type: 'series'
+      seriesId: string
+      title: string
+      blurb: string
+      order?: number
+    }
