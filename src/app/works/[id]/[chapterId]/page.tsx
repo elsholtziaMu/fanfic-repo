@@ -117,17 +117,17 @@ export default async function ChapterPage({ params }: PageProps) {
         <div className="card mb-6 bg-stone-100 border-stone-300">
           <div className="flex justify-between items-center flex-wrap gap-4">
             {seriesInfo.prev ? (
-              <Link href={`/works/${seriesInfo.prev.id}/${seriesInfo.prev.chapterId}`} className="text-violet-700 hover:text-violet-800">
+              <Link href={`/works/${seriesInfo.prev.id}`} className="text-emerald-700 hover:text-emerald-800">
                 ← {seriesInfo.prev.title}
               </Link>
             ) : (
               <span />
             )}
-            <Link href={`/series/${series!.id}`} className="font-medium text-violet-900">
+            <Link href={`/series/${series!.id}`} className="font-medium text-emerald-900">
               {series!.name} 系列
             </Link>
             {seriesInfo.next ? (
-              <Link href={`/works/${seriesInfo.next.id}/${seriesInfo.next.chapterId}`} className="text-violet-700 hover:text-violet-800">
+              <Link href={`/works/${seriesInfo.next.id}`} className="text-emerald-700 hover:text-emerald-800">
                 {seriesInfo.next.title} →
               </Link>
             ) : (
@@ -186,17 +186,17 @@ export default async function ChapterPage({ params }: PageProps) {
         <div className="card mt-6 bg-stone-100 border-stone-300">
           <div className="flex justify-between items-center flex-wrap gap-4">
             {seriesInfo.prev ? (
-              <Link href={`/works/${seriesInfo.prev.id}/${seriesInfo.prev.chapterId}`} className="text-violet-700 hover:text-violet-800">
+              <Link href={`/works/${seriesInfo.prev.id}`} className="text-emerald-700 hover:text-emerald-800">
                 ← {seriesInfo.prev.title}
               </Link>
             ) : (
               <span />
             )}
-            <Link href={`/series/${series!.id}`} className="font-medium text-violet-900">
+            <Link href={`/series/${series!.id}`} className="font-medium text-emerald-900">
               {series!.name} 系列
             </Link>
             {seriesInfo.next ? (
-              <Link href={`/works/${seriesInfo.next.id}/${seriesInfo.next.chapterId}`} className="text-violet-700 hover:text-violet-800">
+              <Link href={`/works/${seriesInfo.next.id}`} className="text-emerald-700 hover:text-emerald-800">
                 {seriesInfo.next.title} →
               </Link>
             ) : (
