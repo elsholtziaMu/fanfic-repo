@@ -158,7 +158,7 @@ function WorkCard({ work }: { work: Work }) {
           </div>
         </div>
       </div>
-      <p className="text-stone-600 mt-3 line-clamp-2 whitespace-pre-wrap">{work.summary}</p>
+      <p className="text-stone-600 mt-3 whitespace-pre-wrap">{work.summary}</p>
       <div className="flex flex-wrap gap-2 mt-3">
         {Object.entries(work.tags).map(([categoryId, tags]) =>
           tags.map(tag => (

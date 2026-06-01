@@ -143,7 +143,6 @@ export default async function ChapterPage({ params }: PageProps) {
         )}
         {(currentChapter as any).beginNote && (
           <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <h3 className="text-sm font-medium text-stone-600 mb-2">前言</h3>
             <p className="text-stone-700 whitespace-pre-wrap">{(currentChapter as any).beginNote}</p>
           </div>
         )}
@@ -235,7 +234,6 @@ function OneshotView({ work, chapter, comments }: { work: any; chapter: any; com
         )}
         {chapter.beginNote && (
           <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <h3 className="text-sm font-medium text-stone-600 mb-2">前言</h3>
             <p className="text-stone-700 whitespace-pre-wrap">{chapter.beginNote}</p>
           </div>
         )}

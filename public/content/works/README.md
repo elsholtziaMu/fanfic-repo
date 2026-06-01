@@ -119,6 +119,7 @@ series-系列名/
 |---------|----------|----------|
 | au | AU | ABO, 哨向, 现代, 古代 |
 | cp_type | 配对类型 | BL, BG, GB, GL, 无CP |
+| attribute | 属性 | 正苏, 双性 |
 | main_char | 主角 | 自定义角色名 |
 | relationship | 关系 | 水仙, CP, CB, 群像 |
 | status | 更新状态 | 连载中, 已完结, 坑 |

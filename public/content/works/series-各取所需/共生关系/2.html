@@ -1,0 +1,840 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>【卡布深】共生关系（中）</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="cce3aa77-0e17-4111-9884-9d81de615210" class="page sans"><header><h1 class="page-title" dir="auto">【卡布深】共生关系（中）</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="a535c847-c3e6-4bd0-957b-093c41b31d62" class="">
+</p></div><div style="display:contents" dir="auto"><p id="61e7938f-a588-4ab6-80a9-26781e91462d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="adf493a2-6b3f-4c5f-8995-7e6aa9c65d65" class="">“那我可以吗？只跟我。”</p></div><div style="display:contents" dir="auto"><p id="048f98bf-d1bc-4b64-a2cd-bc5ef0f62bed" class="">
+</p></div><div style="display:contents" dir="auto"><p id="b864bb86-738b-4e7a-9a6f-a8e5bb26732f" class="">周深本能地想要拒绝。被他视为家人的卡布正在邀请他进入一段肉体关系。周深知道卡布信任自己，或许甚至有些雏鸟情结——这太容易变质了。卡布期望的是被偏爱和信任，他完全能理解卡布以性为媒介来满足这种需求。这来得太容易，又没有真正的情感纠葛。可一旦为卡布提供情感价值的对象从多个“认识的人”变成了一名“信任的熟人”，卡布还能维持住先前情欲交易的态度吗？</p></div><div style="display:contents" dir="auto"><p id="1b6be055-9b0d-40c2-958f-6339f50caf06" class="">可卡布总是一副后悔说了有歧义的话的样子，周深当然看得出对方也不想两人的关系暧昧起来。</p></div><div style="display:contents" dir="auto"><p id="c4e51655-c2b1-4a21-b961-26e9ff5e5b8c" class="">“要我出镜吗？”</p></div><div style="display:contents" dir="auto"><p id="75a2d2f1-0a44-4835-91f8-6281b6aa5b13" class="">当然不能由他出镜，无论是身形还是声音都太明显了——更何况周深本来就不愿意。卡布的账号大抵是展示技术用的，在排他关系下根本用不上这个账号。周深知道卡布能明白自己是希望他不要放弃他自己的小圈。</p></div><div style="display:contents" dir="auto"><p id="d41a0443-7a31-4893-a96b-4ce719b78b5b" class="">如果两人的情感关系不变味，熟人之间的肉体关系无疑是最安全舒适的。周深不是没有幻想过拥有一个稳定的性伴侣，甚至在不知道那名控射师就是卡布时短暂地代入过凌宇。但是卡布离他太近了，近得让他舍不得远离一步。他可以尝试，但不能冒险。</p></div><div style="display:contents" dir="auto"><p id="3f10541e-a944-4d7d-96a7-fe22c1368f0e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3644fe74-b398-4e19-8060-1dc67632175b" class="">卡布的眼神闪了闪，“你的体型不显我手小，老板。我人设要崩掉的。“</p></div><div style="display:contents" dir="auto"><p id="32ec376d-90b1-4bd3-a191-53ad2495171d" class="">他的视线飘忽着，似乎是欲言又止。周深耐心地等着，最终见卡布瘪了瘪嘴。</p></div><div style="display:contents" dir="auto"><p id="91ea26ac-f497-4439-b136-897668a5f2cb" class="">“刚才冲动了，”他抬手遮住了半张脸，“但我是认真要问的。”</p></div><div style="display:contents" dir="auto"><p id="070f97ec-9e01-4121-9d8c-1ecb91533dc0" class="">“老板你也不用只跟我。我只是希望你可以不要那么辛苦地……”说到一半就断了。他看着周深，不知不觉指甲就卡进了齿间。</p></div><div style="display:contents" dir="auto"><p id="79e0aacd-fc1e-48ea-9f94-5fe56300d491" class="">
+</p></div><div style="display:contents" dir="auto"><p id="f2830544-b29f-4c30-a335-6a77b5ca7a09" class="">“嗯，我知道 。”</p></div><div style="display:contents" dir="auto"><p id="8c37147c-8187-41ad-bf11-0501e60f14fe" class="">他那似家人的友人又在焦虑。周深前探着轻轻拉开了卡布的手，拇指轻轻搭在对方凸起的骨节上。脑中闪过了些不合时宜的画面，周深为了防止自己瞬间抽开手反而是捏了捏卡布的掌心。</p></div><div style="display:contents" dir="auto"><p id="66931950-c307-42c2-bfa4-b41f62ea53d6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="6d537683-8e46-4321-ab54-92d7f84523af" class="">“对不起，”卡布看了看自己的手，“我其实已经很少啃了。”</p></div><div style="display:contents" dir="auto"><p id="42e207cc-7fbe-4390-bdcc-9a4335bfa358" class="">
+</p></div><div style="display:contents" dir="auto"><p id="59d162fe-afc8-423c-aae1-87b8402e4176" class="">周深轻轻托着卡布的手。所有情绪都需要一个发泄的口，周深不知道啃指甲和控射之间是否是可转换的，亦或者是卡布单纯是为了玩控射才开始克制啃指甲。</p></div><div style="display:contents" dir="auto"><p id="2cf09433-2385-4ba1-a0e0-c126f20415b5" class="">好漂亮的手。这比相机记录的要生动得多。温热、柔软。指尖的粉、指甲的光泽、骨骼投下的阴影不再是扁平的像素。他想起卡布做的手操，带着淡淡木质香的护手霜，那双手敲击键盘时清脆的响声，玩闹时触碰自己的力度。视频中瞬时的轮廓忽然有了时间和空间的维度，这双手以及它的所能在这时变得立体起来。</p></div><div style="display:contents" dir="auto"><p id="b61c1708-1726-421e-b4a8-074e7ffdaba9" class="">摆在周深面前的这个提议无疑是诱人的。他无意间窥到了新世界的一角，而现在开门的钥匙就躺在手中。</p></div><div style="display:contents" dir="auto"><p id="4d4fd7da-efd7-4fdd-94c9-a2d5996eb4ac" class="">“其实可以，”周深冷不丁说道，“只跟你。”</p></div><div style="display:contents" dir="auto"><p id="e3b200ab-0f10-4ff1-8195-9ffc80f7e320" class="">“除非我总是找不到机会回家。”余地还是要留的，这不止是要让卡布少些维持不平等关系的罪恶感。归根结底，这段关系仍是单纯的各取所需，如果满足不了就必然要另找他人。</p></div><div style="display:contents" dir="auto"><p id="ca32e57d-1d08-46bf-a302-35e0f3a6d5c8" class="">只是卡布才刚提过不与人上床，周深不明白卡布到底指的是什么。“你愿意进行到什么程度？”</p></div><div style="display:contents" dir="auto"><p id="0de55bf8-7e8b-47c2-af4c-c810cf4de66e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="24172100-d68f-470f-848c-d6a60d207797" class="">面前的人在瞬间红了一度，缩起了脖子。“这就……答应了？”</p></div><div style="display:contents" dir="auto"><p id="b9d5a03b-e801-488a-92cf-c2af1a67c8d1" class="">见周深眨眼，卡布才想起要回答问题。“只要你不嫌弃我，都……都可以。”</p></div><div style="display:contents" dir="auto"><p id="f1e0ee3e-abf5-4596-b428-23a463cdf793" class="">
+</p></div><div style="display:contents" dir="auto"><p id="d43ed60b-b1d5-4e1e-82b0-30f536376f2f" class="">“你是……”周深迟疑道，“哪方？有偏好吗？”</p></div><div style="display:contents" dir="auto"><p id="c48e2327-7157-4a69-9bca-3da8cd56e0ac" class="">
+</p></div><div style="display:contents" dir="auto"><p id="65628680-b5f5-4aa1-9929-ef6ba982bd9a" class="">卡布张了张嘴，咽了口口水。“都可以吧……我不知道。我……”他将脑袋藏得更低了些，“我没跟别人试过。”</p></div><div style="display:contents" dir="auto"><p id="5083d88f-a5a7-4d13-bcb7-2a27bcb53536" class="">
+</p></div><div style="display:contents" dir="auto"><p id="8641e26d-28e5-406c-b49a-053d07a52c7a" class="">并不意外的发现。没有经验的人在约玩的圈子里不受欢迎，周深知道卡布怕是又在死盯着一点妄自菲薄。</p></div><div style="display:contents" dir="auto"><p id="3bf3b02d-c5ba-4c33-9021-bc780d4cb858" class="">“这没关系呀，”周深弯腰偏过头，终于对上卡布的视线。“我们一点一点来。”</p></div><div style="display:contents" dir="auto"><p id="ee9b8d14-0b97-421f-8815-5603c06f785c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="073a39ff-561d-4769-8e6f-9f1cb1af8c94" class="">
+</p></div><div style="display:contents" dir="auto"><p id="e5ac343d-69e0-488c-a648-8c9ea05d9b41" class="">
+</p></div><div style="display:contents" dir="auto"><p id="78e2d222-1c94-4e32-98ad-ba24fbbde4f7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="edac4c95-0823-4649-9355-c63e97f9d1e2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="c3dabc8a-459a-474e-b016-0bb40fbfdc46" class="">
+</p></div><div style="display:contents" dir="auto"><p id="b55c08a4-a402-4222-b1d5-729eeb4039c2" class="">放假状态挡不住直接通过微信甩来的歌谱的曲作朋友。在周深想起来自己各种意义上都不在工作时间前，音质堪忧的弹唱 demo 便已经播完了第四遍，活动室角落的打印机也嗡嗡打起了谱子。他窝在布艺沙发的一角，视线顺着对面的白墙向上。活动室的钟是卡布挑的，据说是专门选了静音的，这样就不会在几人一起录音玩的时候有杂音。</p></div><div style="display:contents" dir="auto"><p id="7e0590cd-2b18-4c7a-93f7-89271055fb1c" class="">距离卡布说有空的时间还有不到一小时。洗完澡后若是开始研究谱子，去见卡布时怕是要舍不得搁置那四五页纸。</p></div><div style="display:contents" dir="auto"><p id="d80b4df9-1e58-4b3b-9643-8fa9168f3637" class="">
+</p></div><div style="display:contents" dir="auto"><p id="6b74e8c3-b2dc-409f-8a3c-ad2e3cdd607c" class="">明天再说吧。</p></div><div style="display:contents" dir="auto"><p id="15093b30-50ac-4e33-8e3c-13329085ea75" class="">
+</p></div><div style="display:contents" dir="auto"><p id="ac0f26ea-1439-47e3-ad74-8f61e366028d" class="">打印机停止了声响，周深起身来到机器前，拿起了顶部一小叠平整温热的纸张。</p></div><div style="display:contents" dir="auto"><p id="e7d47773-0f97-407e-bf46-8a62f5d47fb9" class="">这是一叠纸的触感最像皮肤的时刻。光滑、柔韧、温暖。周深将谱子抱在怀中，离开了活动室。手中的温度渐渐冷却，他渐渐开始感到胸口发紧。</p></div><div style="display:contents" dir="auto"><p id="767ee609-c314-434e-8dfc-36e0e83882ea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="efd3148e-43d8-41a1-98ae-8d6fc7e6da66" class="">不该这么快拿。</p></div><div style="display:contents" dir="auto"><p id="d4df6cf1-dc58-464f-8732-3601f05a8bb0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="d8e5367b-4c20-4e6e-80de-38a8743920ab" class="">真正饿过劲的时候，只有吃上第一口时才能感觉到饿。可当这一口就是全部时，扑面而来的空虚便会将人淹没。周深快步回到房间，将乐谱随手放在桌上后钻进了浴室。</p></div><div style="display:contents" dir="auto"><p id="248b6105-7058-4a8a-a4e7-07e53dfa1111" class="">
+</p></div><div style="display:contents" dir="auto"><p id="9106272d-d7ff-4452-9d7e-f7696e12e6be" class="">
+</p></div><div style="display:contents" dir="auto"><p id="0576bfc8-b13b-4a1d-a60f-01739f53ab61" class="">水流从头顶倾泻而下。瞬时的凉变为灼痛，经过面颊，沿着脖颈流向锁骨、胸膛。滚烫的水幕覆在周深面上，睁不开眼 ，也无法呼吸。</p></div><div style="display:contents" dir="auto"><p id="5227e24d-4c1f-4258-ab58-fd6af6864184" class="">身体被炙热的水流紧紧包裹，这是一个疼痛的拥抱。他的皮肤开始发红，像是被冰冷的火焰燎过。周深太熟悉这种感觉了。皮肤的渴望被以暴力的方式预支，让他能在洗澡的十分钟内快速崩溃再重组。</p></div><div style="display:contents" dir="auto"><p id="f313efbd-a63b-4327-b0fa-fd86e943fddc" class="">只要再忍半小时就能获得他需要的触碰和关注，可是周深不愿在卡布面前显得如此脆弱。他可以在其他床伴面前将这份与欲望无关的渴伪装成调情，但他不能对卡布这么做。</p></div><div style="display:contents" dir="auto"><p id="da8553d7-7ca8-47c3-b49a-66f676d494ba" class="">泪水迅速溶进热潮中。周深弯腰大口呼吸着，麻木地等待胸口的酸楚过去。</p></div><div style="display:contents" dir="auto"><p id="217644aa-a727-4066-8398-e9938327fcb7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="26e97779-7c24-4f01-aacc-035001ef38d8" class="">周深裹着浴巾倒在床上，被热水捂得过高的体温让他有些头晕。被清洁连带着扩张的后穴还在发涩——而他甚至不知道自己是否真的需要这么做。他叹了一口气，缓缓翻身坐起来，拿起床头柜上的水杯一饮而尽。</p></div><div style="display:contents" dir="auto"><p id="8c249746-85e6-4b86-81ad-e2ee5b71178f" class="">眼睛还有些痛，大概是还红着。但这就算没法快速消掉，也可以用洗脸时进泡沫了糊弄过去。</p></div><div style="display:contents" dir="auto"><p id="f1db3c2c-3ac5-4277-bc48-21f4e2e3279d" class="">多余的温度逐渐消散在空气中，周深终于开始感到冷。他拖着步子走回浴室，从镜子后的柜子里取出吹风机。风被开到了最高温，到后来都分不清头发是否已经干了，只觉得头顶又是烫烫的一片。</p></div><div style="display:contents" dir="auto"><p id="569f647e-f822-49ca-836d-3dbba9ae8577" class="">
+</p></div><div style="display:contents" dir="auto"><p id="cc740704-d68a-44ab-9872-1d596b882920" class="">
+</p></div><div style="display:contents" dir="auto"><p id="8a6c9c19-d53c-4c40-ada6-dc1e8b2cc183" class="">
+</p></div><div style="display:contents" dir="auto"><p id="69deb049-0f42-4fcd-80c0-1c0899fae670" class="">指节叩响卡布的房门时，周深才在走廊春夜的温度下察觉到发顶潮湿的凉意。他听着门内拖鞋的踢踏声，这才对自己是为何而来有了实感。</p></div><div style="display:contents" dir="auto"><p id="8a142f65-e7b4-4056-9f4a-b2b0e7eea860" class="">门开了，屋内对同样穿着睡衣的屋主人来说亮得有些欲盖弥彰。周深抬手摸了摸鼻子，“晚上好。”</p></div><div style="display:contents" dir="auto"><p id="5aa81f53-94f6-4e24-b92d-345f8861e7be" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d8e4388-6c60-411d-917e-c9968fc2c7c1" class="">“嗯，老板，”卡布抿了抿嘴，后退侧身让出一条道。“晚上好，请进。”</p></div><div style="display:contents" dir="auto"><p id="96a4ed63-372e-4171-9a8c-408428f9a6d4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="e77ed840-bf2c-46ce-b974-830b5fe2ad54" class="">周深对这个称呼缩起脖子，“都这样了，也……也不用叫我‘老板’吧。”他嘀咕着迈进了卡布的房间，有些尴尬地杵在床和书桌间空档的正中。背后响起了关门落锁的声音，周深转过身，目光下意识落在门把上。</p></div><div style="display:contents" dir="auto"><p id="b1d71655-6f6b-4d56-b935-3bf2a7ed1611" class="">
+</p></div><div style="display:contents" dir="auto"><p id="a56781bf-0ae3-422e-9860-9812274c96e7" class="">卡布刚刚离开门锁的手又搭了回去，“可以锁吗？”</p></div><div style="display:contents" dir="auto"><p id="dc6e719b-cf47-49df-bd7b-76092d42a987" class="">
+</p></div><div style="display:contents" dir="auto"><p id="d772956e-473c-438a-8f5e-a4dcead9562c" class="">“没事，锁吧。”</p></div><div style="display:contents" dir="auto"><p id="f5ed64be-daed-4153-b9ff-c363d6b1acba" class="">两人都有些不自在，周深知道卡布同样看得出来。他们需要一点能破冰的东西。</p></div><div style="display:contents" dir="auto"><p id="a954177a-0594-46bc-95c7-14d3e47a3096" class="">
+</p></div><div style="display:contents" dir="auto"><p id="f57cf74f-537d-47ff-823d-5af6a5e67d95" class="">“深哥，”卡布小心翼翼地咬出这两个字，摊开手向床脚示意。“穿了睡衣就别往别的地方坐了吧。”</p></div><div style="display:contents" dir="auto"><p id="90c6acee-0739-4459-afd4-4a7fd0a4809c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="cfdf1430-40e4-47d6-b6b3-1a1be92153a5" class="">不是调情，不是调情。周深咬着脸颊肉提醒自己卡布的小洁癖。他和卡布同时在床上坐下，后者直接将双脚抽出拖鞋盘起了腿。</p></div><div style="display:contents" dir="auto"><p id="20adb9c2-bbb6-42ca-9193-811a5057d1e1" class="">床单被套是新换的——织物消毒液的气味也很重，甚至可能是刚洗完的。手下浅灰的布料是磨毛棉，柔软的触感让才刚从症状中恢复过来的周深忍不住多摸了几下。</p></div><div style="display:contents" dir="auto"><p id="bf5b285e-ee86-4b76-b831-4d6fda42fe66" class="">“你这个床单挺好的，”他下意识说道。</p></div><div style="display:contents" dir="auto"><p id="3a5fff1d-43d8-4d8f-ac6f-09551a4883c3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="ce44783b-16f3-4fa8-b189-5798ecaccc28" class="">“嗯，”卡布盯着地面，手指绞在一起。“很保暖。”</p></div><div style="display:contents" dir="auto"><p id="63013ae5-d35b-4d08-a287-b2cdcb280706" class="">
+</p></div><div style="display:contents" dir="auto"><p id="55c1b04d-0fba-43e2-b9a1-3e1dd0a8d50d" class="">周深偷偷碾着床沿，告诉自己不要想多。</p></div><div style="display:contents" dir="auto"><p id="71f9dcac-bc99-4c48-a201-ac95c1c65569" class="">
+</p></div><div style="display:contents" dir="auto"><p id="6fc9ccc3-f235-49df-97b2-5e5fa11a9643" class="">卡布抿着嘴，将目光移往周深的方向。“你平时……是怎么跟人开始的……？”</p></div><div style="display:contents" dir="auto"><p id="2224ff32-e356-4bfd-a639-62f52f7ef6e8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="900f0d45-32f8-4afd-8eea-b02c649a3178" class="">“呃……”周深犹豫地微张着嘴，转头对上卡布的视线又迅速转开。“接吻，”他老实答道。</p></div><div style="display:contents" dir="auto"><p id="896011ec-88fb-4794-b13e-3bef4219b823" class="">
+</p></div><div style="display:contents" dir="auto"><p id="576cfa10-6c46-4a12-90aa-f1eab5e6f7c3" class="">“教我，”他听到卡布说。</p></div><div style="display:contents" dir="auto"><p id="71c3888b-beae-4dad-be55-d433536245a9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="42391f40-e89e-4c1c-b401-db697100c744" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1424def5-58fa-4d26-9725-423c6d39ca25" class="">周深扭头看向卡布，透过镜片从他的眼神中读到认真和一丝不安。眼睛不由地转向对方的唇，捕捉到一点柔和的光泽。他们用的是同一款润唇膏，是周深出差时便利店的买一送一。于是他便提前知道了两人双唇相贴时的触感。</p></div><div style="display:contents" dir="auto"><p id="02b19391-9b94-413e-aa93-ef2635121b80" class="">卡布依然盯着他的眼睛。周深缓缓抬起一只手，指尖贴上了对方的脸颊，触到一层细细的绒毛。手心渐渐被微凉的柔软盛满，是卡布迎着他的动作将脸送了进去。</p></div><div style="display:contents" dir="auto"><p id="3d7db2ae-8e2c-4719-be28-316d25e5a754" class="">两人几乎是同时发出了颤抖的吸气声。周深怔怔捏了捏卡布的脸颊，努力克服同另一个肉体紧贴的冲动。他的指尖掠过耳廓，穿过发稍，最终托住了半边脑袋。小声道，“真要我教呀？”</p></div><div style="display:contents" dir="auto"><p id="77c3c630-9a18-4496-a710-8301a693248b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="8c5e3dcf-db72-4c36-ad74-5912c1d80ada" class="">“嗯，”卡布眨了眨眼，有些不好意思地笑道，“只会努嘴。”</p></div><div style="display:contents" dir="auto"><p id="53d62dd8-07c4-42e3-a5b6-d3269bd87dfd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="c826f067-e29a-47f3-bca0-2b860baf88f7" class="">周深噗嗤一声跟着笑了。空余的手捏着镜框摘下卡布的眼镜，抵着对方的胸口叠好，再挂在领口。完成这一切，周深的手终于搭上卡布的肩头，将他轻轻往自己的方向带。他开始能感觉到对方皮肤的温度，嗅到护肤品淡淡的香气，唯独没有第二份呼吸。</p></div><div style="display:contents" dir="auto"><p id="2520f57a-91b8-45ee-9eab-c15f8e750173" class="">“别紧张，你自己来。”说话呼出的热气填满了两人之间的空隙，最终被对方的鼻息吹散。</p></div><div style="display:contents" dir="auto"><p id="814aee84-a296-439f-9c80-10d9df78c88f" class="">两人的气息开始交织，周深闭上了眼。双臂被虚虚抓住，脊柱传过一阵满足的酥麻。面前的人微微倾身，补上了两人间的最后一丝距离。</p></div><div style="display:contents" dir="auto"><p id="d061f2d0-ce73-430c-aa99-cb82b19376da" class="">
+</p></div><div style="display:contents" dir="auto"><p id="eec50835-e65a-461f-bfb5-e17c2a7bf8f9" class="">触碰来得比周深预想得更柔软轻盈，如同陷入了一朵温暖的云里。卡布的吻有些小心翼翼，像是在确认面前的他是真实的。嘴唇和手臂上传来的温度让周深的身体有些发软。他从鼻子轻叹出一口气，将一条腿收上床，小腿的皮肤贴上了卡布的膝盖。</p></div><div style="display:contents" dir="auto"><p id="9a7bcd48-e08c-4189-ade9-57710e10015b" class="">掌下的身体轻颤着，拢着周深的双手却随着唇瓣的摩擦渐渐收紧。周深歪头调整了角度，将唇贴得更紧了些，引来一阵战栗。他的手从卡布肩头滑向臂弯，后者便顺着他空出来的位置捧住了他的后颈。</p></div><div style="display:contents" dir="auto"><p id="40a41095-d4ec-4f6a-a3bd-8e13e486b9bd" class="">周深微微张嘴，含住了卡布的下唇。舌尖带回了唇膏油润的触感和带着甜的薄荷味，周深这才想起来卡布那瓶淡橙色的漱口水。</p></div><div style="display:contents" dir="auto"><p id="bcce0f3d-b761-4b1b-b1bf-3bc24ba2b1e1" class="">这小子。</p></div><div style="display:contents" dir="auto"><p id="c1011030-1ee3-4fb2-9aef-9502c26f407f" class="">周深轻轻沿着卡布的舌尖绕了半圈便不再动作。卡布很快会意，开始笨拙地回吻他。周深或许不是最好的老师，但一定是最好的搭档。他从不追逐，从不退缩，只是回应。</p></div><div style="display:contents" dir="auto"><p id="f3c7755c-ddb7-4617-80de-683d37805253" class="">
+</p></div><div style="display:contents" dir="auto"><p id="b75f6b8a-407a-4404-bf5f-35b5b191a926" class="">
+</p></div><div style="display:contents" dir="auto"><p id="18743f35-1b8f-4979-af0c-885e8bb82379" class="">最先从吻中抽出的是卡布。两人额角相触，周深能听到对方有些急促的呼吸。他带着笑意用指节扫过卡布的耳廓，反复蹭着那处微微发烫的皮肤。</p></div><div style="display:contents" dir="auto"><p id="75e1d5f2-174a-4d38-a010-6a0f740e6289" class="">周深笑了笑，弯着指尖轻点卡布的手。“今晚想做些什么？”</p></div><div style="display:contents" dir="auto"><p id="1dfc7e12-e0de-44b1-8da1-bf329208a3ac" class="">
+</p></div><div style="display:contents" dir="auto"><p id="f5649dbf-fb30-450b-a435-b195b00b4373" class="">面前的人歪头问道，“只用手，可以吗？”</p></div><div style="display:contents" dir="auto"><p id="de8a657e-2870-4839-869e-926e4713970b" class="">“当然。”  周深有一搭没一搭地捏着卡布的指节，“就算现在结束也没关系。”</p></div><div style="display:contents" dir="auto"><p id="50e1bf1d-af09-4689-b8c8-0434682578e4" class="">他当然看得出卡布还想做更多，可他也想卡布知道他们永远都有退路。周深暗暗笑自己有些过度小心。就算卡布没有经验，也不是什么懵懂的小白花。他的紧张来源于对周深的尊敬和两人的熟稔——熟稔，却在探索对方陌生的一面。</p></div><div style="display:contents" dir="auto"><p id="e876c7d4-a8de-496d-ab1e-c5493d7752a1" class="">没有人急着驱散空气中的安静。周深撑开手指，触到了卡布的脸颊。后者松开了捧着他的手，轻轻搭在他的腿上。指尖顺着细腻的皮肤来到脖颈，周深不用集中注意力就能感觉到这处心跳的搏动。</p></div><div style="display:contents" dir="auto"><p id="e3aff6f8-f889-4aac-872c-e8d7e2554e86" class="">“可以在我身上试试你平时玩的吗？”他的视线追着自己的手指，描着卡布脖颈的线条，有些舍不得离开这份真实的温暖。</p></div><div style="display:contents" dir="auto"><p id="c4accbbb-6590-4530-a3e9-dbe4b8143ea4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="e8f8f1d9-f5d4-4001-9e41-05fd92fb9725" class="">卡布跟着周深的动作向一侧扬起了下巴，露出更多咽喉处的皮肤。</p></div><div style="display:contents" dir="auto"><p id="df090a68-2946-46a7-99b1-423aad2257a2" class="">“控射？”他的表情变得认真了许多，却仍然是顺从地接受周深的抚摸。周深的手来到他胸口，轻轻按在锁骨下方。</p></div><div style="display:contents" dir="auto"><p id="bc2bbc60-e36a-44f6-8395-fc99b33c99fc" class="">“嗯……”卡布伸手握住了周深的手腕，“深哥你了解过安全词吗？”</p></div><div style="display:contents" dir="auto"><p id="f9258ecd-a1cd-421a-8eb9-44b921f77e66" class="">
+</p></div><div style="display:contents" dir="auto"><p id="65d2664b-1d58-4b8a-8448-6a8f183c9e71" class="">如果卡布不问，周深或许还会觉得自己知道安全词是什么——可他偏偏在周深认为不需要安全词的时候问了。</p></div><div style="display:contents" dir="auto"><p id="bd903dbb-10df-4358-a1d5-e99f34671961" class="">“不太清楚。”</p></div><div style="display:contents" dir="auto"><p id="8a07b48f-0b69-4ab0-9a99-c83966c5cfe2" class="">周深偷偷观察着卡布的表情，他很爱看卡布在认为自己需要对别人负责时认真的样子。卡布会在一瞬间脱离平时的温和，展现出一种少见的锐利和果断。他的存在会舒展着占据整个空间，让人忘记他是屋内身型最小的一个。</p></div><div style="display:contents" dir="auto"><p id="2aed3fba-8671-493b-a86a-385959237299" class="">即使他还红着耳朵。</p></div><div style="display:contents" dir="auto"><p id="a11df258-9c69-42d7-bff4-add9adb7817e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="10490211-e718-422a-aee3-af9e6c3521fd" class="">“会让你感到不舒服的因素比你想象的要多，”像是察觉到了周深的疑惑，卡布耐心解释道。“我也需要安全词。我可能会中途接受不了自己对你做的事……或者有些其他意外的情况。”</p></div><div style="display:contents" dir="auto"><p id="865d1aec-f03e-472c-aaef-48f782827f13" class="">
+</p></div><div style="display:contents" dir="auto"><p id="13f92616-6a58-4b2c-a90e-254359a4e4d1" class="">卡布还抓着周深的手，像是专心思考时无意识的动作。周深便心安理得地将手掌贴在他胸口，随着他的呼吸缓缓起伏。</p></div><div style="display:contents" dir="auto"><p id="b722e231-9e73-4a6d-a7f6-0e843d0cdea2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="e2e1b1cb-7582-46fb-847f-89eb556940b5" class="">“我们安全词用‘红黄绿’就可以了，”卡布继续道。</p></div><div style="display:contents" dir="auto"><p id="b6ae3e51-b79c-40ac-9307-25f87c77b086" class="">“‘红’是立即停止。你在一些状态下会不由自主地在想要继续的时候说‘不’和‘停’，我需要能够区分你的拒绝有没有过脑。”他笑了笑，“免得扫兴。”</p></div><div style="display:contents" dir="auto"><p id="ba366ec9-20b6-486f-a453-4c9461157a9f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="9b80b820-d3a9-4007-9637-459ce4dcb641" class="">周深皱起脸，“口嫌体正直。”</p></div><div style="display:contents" dir="auto"><p id="8c1a5c24-dafe-43dd-8c59-f1029186a93f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3f41da72-3c3e-4e96-b9fd-327f82172825" class="">“是呀，口嫌体正直。”卡布眨了眨眼，“说不定等下就能体验到呢？”</p></div><div style="display:contents" dir="auto"><p id="8540fcc8-2c34-4f19-ad04-076897be3fd0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="7cfab711-aa9a-41f9-b29f-623925eb8e20" class="">“黄绿，你快继续讲。”周深缩着脖子移开了视线。他好像真的触到了卡布的什么开关。虽然还远不及视频中的强势，但现在的卡布已经隐隐开始掌控两人的互动。</p></div><div style="display:contents" dir="auto"><p id="2e155d1c-fcba-44f3-abfa-8d596c53b618" class="">
+</p></div><div style="display:contents" dir="auto"><p id="021084d8-b732-4aa6-a193-d6d4062f7a8f" class="">卡布没有点破周深突然的害臊，只是清了清嗓子。</p></div><div style="display:contents" dir="auto"><p id="76ae6733-0ad5-4921-9c45-4ab22ac6ad8f" class="">“‘黄’代表你有点不舒服，需要降低强度或者做些调整，但还可以继续。‘绿’是可以继续。”</p></div><div style="display:contents" dir="auto"><p id="cdf9db3d-0cea-4bda-bbd2-6655218735bf" class="">“除了你自己说，我也会在不确定的时候问你颜色。”</p></div><div style="display:contents" dir="auto"><p id="f04939e4-733b-4bd4-af11-dc6315b689f3" class="">他捏了捏周深的手腕，像是终于发现自己一直抓着他一样低头看了一眼。“我说了这么多……深哥你应该能明白你不一定会喜欢这种玩法吧。”</p></div><div style="display:contents" dir="auto"><p id="e5e549aa-5ead-48a2-81c0-92648a03c602" class="">
+</p></div><div style="display:contents" dir="auto"><p id="513d89f7-0069-4bfc-8d4f-cf0b1a310ccc" class="">周深笑道，“所以要试呀。”</p></div><div style="display:contents" dir="auto"><p id="90ee2681-2682-4472-891b-64240249c024" class="">
+</p></div><div style="display:contents" dir="auto"><p id="15614e8f-8929-4b73-b40e-6420c2e014d9" class="">卡布松开周深的手，抿着一个微笑站起身。“那我改开台灯咯？”</p></div><div style="display:contents" dir="auto"><p id="f771b34f-64e7-4613-8a9e-b2b8a4da0eac" class="">
+</p></div><div style="display:contents" dir="auto"><p id="f9d99919-1536-4cc1-8d45-8dcf3900a452" class="">
+</p></div><div style="display:contents" dir="auto"><p id="3784d1fa-f397-4f9f-9894-c68bf3e46ba3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="81eb1af9-2528-4639-960c-f49dab8125a5" class="">房间暗下来时，周深已经把自己挪到了床头，毫不客气地立起了卡布的两个枕头，叠起靠在床板上。他借台灯的暖光注视着卡布走近，在床头柜上放下眼镜，坐上床沿。</p></div><div style="display:contents" dir="auto"><p id="d94c881c-1478-4e26-b823-c90a4f377d50" class="">周深逆光看着他的背影。那对肩膀缓慢地完成了一次无声的起伏，片刻后卡布才将膝盖收上床铺，坐到了他腿边。周深向卡布展开手臂，对方便一手支着身体凑上前去，将另一手搭在他肩上。</p></div><div style="display:contents" dir="auto"><p id="dc708d07-8c96-4285-8f14-e4685e4fafb5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="21108476-a8a6-4b68-87aa-c8ab06dc1cd2" class="">“刚才是不是亲早了？”卡布停在了一尺外，脸上的表情在昏暗的灯光下模糊不清。</p></div><div style="display:contents" dir="auto"><p id="97f277a5-79c2-4476-b85b-7a867c5b13b9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="aa609a85-cdb3-4ca8-83c8-8bd5ece2ea19" class="">“不早。”周深伸手勾住了卡布的脖颈，将他带向自己。“正经的跟练习能一样吗？”</p></div><div style="display:contents" dir="auto"><p id="f247739f-4f0a-4fa3-8e68-5b77824d3400" class="">两人的唇瓣再次重叠，周深搂着卡布的腰示意他继续靠近。可跪坐着的卡布比周深高出一截，周深只有扬起下巴才够得到他。</p></div><div style="display:contents" dir="auto"><p id="2d3d3f80-c5c7-4159-a45b-bc2d6ac30dc6" class="">年长些的歌手这次终于占据了主动权。周深在卡布的轻哼声中引导着他的动作，直到听到对方呼吸时空气经过的摩擦声。卡布的身体已经越伏越低，撑在周深肩上的手也移到了他腿边的床垫上。</p></div><div style="display:contents" dir="auto"><p id="a4218582-051b-403b-90a9-a3e63e304e16" class="">
+</p></div><div style="display:contents" dir="auto"><p id="391e6f53-dd74-4fe4-91de-ea9cb5cf6483" class="">周深从吻中抽出，用指腹轻轻抹着卡布湿润的下唇。“你真的一接吻脸就超级红哎，”他小声调侃道。</p></div><div style="display:contents" dir="auto"><p id="4c7da2e7-fdd6-4684-8981-ff791f0dbb55" class="">
+</p></div><div style="display:contents" dir="auto"><p id="acaa365e-aa4d-4cfa-8827-613d987898bb" class="">“你才看不见，”卡布瘪着嘴道，“灯这么暗。”</p></div><div style="display:contents" dir="auto"><p id="e0c41ea3-1948-4694-adfe-38b9bde58c7b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="c053ecb6-2a06-43ff-8568-c70fba9ca48a" class="">“你应该感谢我没拿别的事情逗你，”周深一脸无辜地收回手，后倾陷进立起的枕头中。</p></div><div style="display:contents" dir="auto"><p id="ae054d66-0afe-4736-b290-b4600b958d47" class="">
+</p></div><div style="display:contents" dir="auto"><p id="bcaf439f-7318-4863-aa95-4f21c28df380" class="">卡布转移了重心，一只手轻轻搭在周深的裤腰上。“不许说。”</p></div><div style="display:contents" dir="auto"><p id="2a19f2c3-2a98-4083-89fb-c2b422026db2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="7795b3d4-ff05-4fd1-989f-6b367f1af624" class="">周深咯咯笑着，配合地没再继续。可卡布也抿着嘴僵在原地，本就像是玩笑的威胁彻底变为不知所措。</p></div><div style="display:contents" dir="auto"><p id="bcf7e549-7d5c-406b-b098-5e84c0faa55a" class="">两人都弯了嘴角。卡布是心虚，周深是觉着有趣。</p></div><div style="display:contents" dir="auto"><p id="949fe0a1-50fe-4f84-b04d-fc9f545f3eef" class="">“紧张啦？”周深的手覆上了卡布的，轻轻握着他的手掌牵起，让他的手指搭在自己的拇指上。</p></div><div style="display:contents" dir="auto"><p id="0b58132a-da9b-42b6-b573-a472976be480" class="">他盯住卡布的眼睛，微微低头亲吻他的指节。与嘴唇并不贴合的形状让他不用刻意用力就能发出难以忽视的“啾啾”声。卡布的手指收紧了些，却没有要躲，周深便张开嘴，用舌头挑动对方的指尖。</p></div><div style="display:contents" dir="auto"><p id="8de60441-8780-40fa-aade-12c7e17ff335" class="">
+</p></div><div style="display:contents" dir="auto"><p id="747ef805-5c17-4aa6-9070-d686964a5b51" class="">“深哥……”卡布瞪大了眼睛，视线在周深的双眼和口唇间跳动着，像是哪边都不敢多看。</p></div><div style="display:contents" dir="auto"><p id="6eaf6ad0-d735-4be5-b39a-bd6ead79d2dc" class="">
+</p></div><div style="display:contents" dir="auto"><p id="9f5bfc18-85db-4850-b851-098217924d2e" class="">“嗯？”周深的舌尖沿着卡布的手指往上，将一根卷进口中。他合上嘴，在卡布颤抖的吸气声中用舌头贴上他的皮肤。唇舌轻柔地包裹着它，交换着体温。周深没有过多停留，很快吐出了卡布手指，却只是为了含进第二根。</p></div><div style="display:contents" dir="auto"><p id="217acb79-cdc9-498f-bb48-401de104152c" class="">周深探向自己身侧，找到卡布撑在床上的手，握住手腕轻轻拽了拽。对方很快直起身，将重量从手上移开。周深就这样领着卡布按上自己的胸口。他挑衅般地将口中的手指吮出了声，逆着胸口轻微的重量坐起身，将卡布的指尖吞到舌根。</p></div><div style="display:contents" dir="auto"><p id="b71330ea-5edd-4daf-a6cc-8253dd71a87a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="4d9295e1-abba-4b4e-8ee0-096d13d16149" class="">好的学生不需要过多引导，卡布会从自己的长处开始。他舔了舔嘴唇，灵活的手指试探性地搅动起来。周深配合地张开嘴，好方便他动作。指腹从舌面上划过，分开，又上下夹住了周深的舌头。</p></div><div style="display:contents" dir="auto"><p id="42eda879-3189-4fb7-bd3a-e55754e020bf" class="">“老板你平时到底跟人玩些什么……”卡布的语气中带着些不可思议，声音却已经开始发紧。周深哼哼着表达对这个称呼的抗拒，卡布全然当作没听见。他重新并起手指，压着周深的舌头缓缓向深处探去。指腹下迅速放松的肌肉给了卡布变相的鼓励，他轻叹着继续道，“你在外面不好好吃饭，是在乱吃东西吗，深哥？你在外面玩这个？”</p></div><div style="display:contents" dir="auto"><p id="712fae70-5e79-4b84-bea3-5f64d276e1ab" class="">
+</p></div><div style="display:contents" dir="auto"><p id="0d6e027e-216e-4d6e-bd61-693fceb3732e" class="">周深的视线自亲吻卡布的手指起便没有离开过他的眼睛，可他这时却有些坚持不住了。这与卡布的问题无关，而是因为他再次提起的气场。周深闭上眼，轻轻摇了摇头，却又合上嘴，含着卡布的手指做吞咽的动作。</p></div><div style="display:contents" dir="auto"><p id="30de48cd-5df3-476c-98dc-341e6163ce8b" class="">他听到卡布从口中吸入一口气，又用气声接了个不算脏的脏字，有些得意地睁眼吐出手指笑道，“天赋来的。”</p></div><div style="display:contents" dir="auto"><p id="d0716004-71e2-43e1-ab7c-e15565cd7df9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="028bf2b1-fc77-4f44-9bd7-d32a6fe34851" class="">“别玩我了，管杀不管埋的。”卡布的声音有些飘忽。他收回被涎水浸湿的手，在周深胸口的布料上抹干。“反正你这件衣服要洗。”</p></div><div style="display:contents" dir="auto"><p id="177db8ef-88e6-4cfc-a2b9-d3960761c1b2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1244072b-7b25-49f1-9599-fa191aa398cd" class="">周深搭住卡布的两只手腕，带着它们在自己身上游移。“怎么管杀不管埋了……”温热的手掌经过双乳，藏进呼吸的一个喘息打断了周深的话。“你有两只手，大不了我也有两只手。”</p></div><div style="display:contents" dir="auto"><p id="1fa1c5f8-5ded-45e9-96d0-5ed5f6ae88f9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="0c9d580c-97e1-4c9c-a490-4295764d3d3c" class="">“我做这个也对自己有要求的好吧。都说好要陪你试了，怎么能随随便便的。”卡布毫不费力地反扣住周深的双手，将它们移开。他循着掌下身体的曲线找到微挺的两点，用指甲轻轻拨弄。</p></div><div style="display:contents" dir="auto"><p id="918a7ef0-531c-4911-bc00-af557e5ffe9b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="08515aa7-6ed2-4d74-9c6d-1b23e1d5c930" class="">周深喘息着倒回枕头上，身体传来的酥麻让他卸了力气。他半卧着看卡布隔着衣服在他身上摸索。</p></div><div style="display:contents" dir="auto"><p id="33011da5-a019-496f-adca-16ae18059aac" class="">暖，好暖。胸前的快感已经不那么重要。卡布紧贴着他的手掌像是一口泉眼，温热的水流潺潺涌出，包裹住他。那股暖意渐渐向下，来到他的腿根。</p></div><div style="display:contents" dir="auto"><p id="5cc474b1-f79a-48b8-a484-6c69ceb46c5b" class="">睡裤的布料被往两边压住，周深这时才觉得涨。他的双腿急迫地紧绷着，等待卡布的下一步动作。</p></div><div style="display:contents" dir="auto"><p id="8f09db8e-57ce-4745-a56d-04a0434fbfc8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="4bcbb27a-dc31-418d-89e7-cad864acd540" class="">“我要碰你了。颜色。”</p></div><div style="display:contents" dir="auto"><p id="0216a42f-9124-4953-80aa-5da903c49719" class="">
+</p></div><div style="display:contents" dir="auto"><p id="13d693bc-a1c5-41b7-87ad-a84f669de80e" class="">周深干涩地吞咽，喉结在脖子柔软的皮肤下滑动。</p></div><div style="display:contents" dir="auto"><p id="43bc46d0-732a-41f2-9363-81ff58c71498" class="">“绿。”</p></div><div style="display:contents" dir="auto"><p id="aace9f84-9ba5-4690-bd49-61172f0b7eff" class="">
+</p></div><div style="display:contents" dir="auto"><p id="8b3d52ec-5d37-4c4b-92b3-92b417ae3636" class="">
+</p></div><div style="display:contents" dir="auto"><p id="9ce31878-c195-44e0-b9ab-b8335f246ea2" class="">娇小却有力的手掌隔着两层布料覆上那处隆起，抵着肉柱根部缓缓向顶端推去。掌根落在周深的小腹上，卡布便拖着指尖将手移回原处，重复着按揉的动作。</p></div><div style="display:contents" dir="auto"><p id="ed54ac31-6363-4331-800e-ecb7af47168d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1c529a98-dd0c-41df-9e97-2c3c5a6d62bc" class="">温水中被搅入一勺糖浆，绵绵的快感随着卡布的动作扩散开来。周深张口小声呻吟着，本能地蜷起身体，却被按着胸口轻轻推回原地。</p></div><div style="display:contents" dir="auto"><p id="0ee969df-6e57-43d1-baf1-2f6db495ce67" class="">
+</p></div><div style="display:contents" dir="auto"><p id="9072ef18-3f83-4bc6-be09-74a7f3fae70d" class="">“这也是天赋来的？”卡布放轻了手下的力度，双眼却是像找到新玩具般亮晶晶的。“你这样很容易累的，深哥，躺下吧。”</p></div><div style="display:contents" dir="auto"><p id="a7ad663c-4708-428e-a0f1-fd7e84bc71ed" class="">
+</p></div><div style="display:contents" dir="auto"><p id="ea0882f7-52e2-416b-b43e-cf7cd58cb8c4" class="">“什么……？”周深的胸口起伏着，发晕的脑袋根本听不懂卡布的暗示。</p></div><div style="display:contents" dir="auto"><p id="d8d4da5f-b197-4930-9179-0a5e7fe3b420" class="">
+</p></div><div style="display:contents" dir="auto"><p id="12d9b79e-0843-432f-a339-3f8d1762e26f" class="">卡布抿嘴笑了笑，“你反应很大。”</p></div><div style="display:contents" dir="auto"><p id="ca85843a-6db6-40ab-83f8-72e3ff2641d3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="63a21c6b-c4bd-48ba-b408-554e8da86105" class="">“你刚才……嗯、也没有很轻吧。”周深弱弱反击着，却配合地将身后的两个枕头抽出放在一旁，挪动着躺下。他歪过头，半阖着眼将卡布的脸和双手收入视野中。</p></div><div style="display:contents" dir="auto"><p id="3e5b7633-2ecf-4922-b98e-bfd2a6e8a2d7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="f4220549-227c-4354-b9a8-109ca375ec13" class="">“哈哈，不用看我。”卡布的声音里带着些捉摸不透的笑意，“又不是没看过视频。”</p></div><div style="display:contents" dir="auto"><p id="caaef22e-12ea-4382-b77f-b0a89379c7cc" class="">“你会没精力看我的。”</p></div><div style="display:contents" dir="auto"><p id="1039ed24-4a3b-4f8a-87e4-689f8f210445" class="">
+</p></div><div style="display:contents" dir="auto"><p id="7a3bdf55-9765-4890-85ec-b74c466613d1" class="">
+</p></div><div style="display:contents" dir="auto"><p id="ca1af2f6-31d2-4868-b2ab-153e2c159799" class="">
+</p></div><div style="display:contents" dir="auto"><p id="1ef4c7fc-c695-4b21-b979-1996cdbd08cd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="8dc3f809-807a-4a9a-b6a3-11bef0215376" class="">
+</p></div><div style="display:contents" dir="auto"><p id="eb46d168-708c-44ca-8078-eda7751d47d6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="280b1f53-bbe5-4192-b0d0-26896f8aa649" class="">
+</p></div><div style="display:contents" dir="auto"><p id="af17649a-22ca-4b75-acbe-61a4dd9a8e79" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="35a32fb2-bd09-4c1f-b1c2-6301b5a92d34"/></div><div style="display:contents" dir="auto"><p id="fdfc89ce-d42a-4a58-8016-9ddb3055e665" class="">
+</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d0ae1144-fc06-472c-8ddd-ef336a4937a4"><div style="font-size:1.5em"><span class="icon">🪵</span></div><div style="width:100%">使出技能【加速车道急刹车】！<br/><br/>喜欢小卡布被动触发 dom 技能。明明很会，但加上跟老板的关系就不敢发挥了。解铃还须系铃人，所以一定要老板勾一下呢😋</div></figure></div><div style="display:contents" dir="auto"><p id="7bb2172e-9864-45ca-98aa-6b5fa4f59cb8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="12493093-fb6c-8005-a9c9-f618fbbedbbf" class="">
+</p></div><div style="display:contents" dir="auto"><p id="12293093-fb6c-800f-950d-dd683c6394eb" class="block-color-yellow_background"><strong>下一章</strong>：<a href="https://www.notion.so/12193093fb6c805f9a9bee4eef69b809?pvs=21">【卡布深】共生关系（下）</a> </p></div><div style="display:contents" dir="auto"><p id="12493093-fb6c-8099-b12d-c0c36a2d6aca" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

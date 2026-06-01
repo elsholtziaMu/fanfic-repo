@@ -6,6 +6,23 @@ const CONTENT_DIR = path.join(__dirname, '..', 'public', 'content', 'works');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'works.json');
 const SERIES_OUTPUT_FILE = path.join(__dirname, '..', 'data', 'series.json');
 
+function getDates(meta) {
+  const today = new Date().toISOString().split('T')[0];
+  
+  if (meta.createdAt && !meta.updatedAt) {
+    return { createdAt: meta.createdAt, updatedAt: meta.createdAt };
+  }
+  
+  if (!meta.createdAt && meta.updatedAt) {
+    return { createdAt: meta.updatedAt, updatedAt: meta.updatedAt };
+  }
+  
+  return {
+    createdAt: meta.createdAt || today,
+    updatedAt: meta.updatedAt || today
+  };
+}
+
 async function readHtmlFile(filePath) {
   try {
     const content = await fs.readFile(filePath, 'utf8');
@@ -54,6 +71,8 @@ async function processOneshot(workPath, workId) {
 
     if (!htmlData) return null;
 
+    const dates = getDates(meta);
+
     return {
       id: workId,
       title: meta.title || workId,
@@ -64,8 +83,8 @@ async function processOneshot(workPath, workId) {
       warning: meta.warning || '',
       tags: meta.tags || {},
       wordCount: htmlData.wordCount,
-      createdAt: meta.createdAt || new Date().toISOString().split('T')[0],
-      updatedAt: meta.updatedAt || new Date().toISOString().split('T')[0],
+      createdAt: dates.createdAt,
+      updatedAt: dates.updatedAt,
       chapters: [{
         id: `${workId}-ch-001`,
         title: meta.title || '全文',
@@ -73,7 +92,7 @@ async function processOneshot(workPath, workId) {
         beginNote: meta.beginNote || '',
         endNote: meta.endNote || '',
         wordCount: htmlData.wordCount,
-        updatedAt: meta.updatedAt || new Date().toISOString().split('T')[0]
+        updatedAt: dates.updatedAt
       }]
     };
   } catch (error) {
@@ -120,6 +139,8 @@ async function processSerialWork(workPath, workId, seriesId) {
     const chapters = [];
     let totalWordCount = 0;
 
+    const dates = getDates(meta);
+
     const files = await fs.readdir(workPath);
     const htmlFiles = files.filter(f => f.endsWith('.html') && f !== 'meta.json');
 
@@ -137,6 +158,8 @@ async function processSerialWork(workPath, workId, seriesId) {
         } catch (e) {
         }
 
+        const chapterDates = getDates({ createdAt: chapterMeta.updatedAt, updatedAt: chapterMeta.updatedAt });
+
         chapters.push({
           id: `${workId}-ch-${String(i + 1).padStart(3, '0')}`,
           title: chapterMeta.title || htmlFiles[i].replace('.html', ''),
@@ -144,7 +167,7 @@ async function processSerialWork(workPath, workId, seriesId) {
           beginNote: chapterMeta.beginNote || '',
           endNote: chapterMeta.endNote || '',
           wordCount: htmlData.wordCount,
-          updatedAt: chapterMeta.updatedAt || meta.updatedAt || new Date().toISOString().split('T')[0]
+          updatedAt: chapterMeta.updatedAt || dates.updatedAt
         });
         totalWordCount += htmlData.wordCount;
       }
@@ -160,8 +183,8 @@ async function processSerialWork(workPath, workId, seriesId) {
       warning: meta.warning || '',
       tags: meta.tags || {},
       wordCount: totalWordCount,
-      createdAt: meta.createdAt || new Date().toISOString().split('T')[0],
-      updatedAt: meta.updatedAt || new Date().toISOString().split('T')[0],
+      createdAt: dates.createdAt,
+      updatedAt: dates.updatedAt,
       chapters: chapters
     };
   } catch (error) {
@@ -177,6 +200,8 @@ async function processStandaloneSerial(workPath, workId) {
     const meta = JSON.parse(await fs.readFile(metaPath, 'utf8'));
     const chapters = [];
     let totalWordCount = 0;
+
+    const dates = getDates(meta);
 
     const files = await fs.readdir(workPath);
     const htmlFiles = files.filter(f => f.endsWith('.html'));
@@ -202,7 +227,7 @@ async function processStandaloneSerial(workPath, workId) {
           beginNote: chapterMeta.beginNote || '',
           endNote: chapterMeta.endNote || '',
           wordCount: htmlData.wordCount,
-          updatedAt: chapterMeta.updatedAt || meta.updatedAt || new Date().toISOString().split('T')[0]
+          updatedAt: chapterMeta.updatedAt || dates.updatedAt
         });
         totalWordCount += htmlData.wordCount;
       }
@@ -218,8 +243,8 @@ async function processStandaloneSerial(workPath, workId) {
       warning: meta.warning || '',
       tags: meta.tags || {},
       wordCount: totalWordCount,
-      createdAt: meta.createdAt || new Date().toISOString().split('T')[0],
-      updatedAt: meta.updatedAt || new Date().toISOString().split('T')[0],
+      createdAt: dates.createdAt,
+      updatedAt: dates.updatedAt,
       chapters: chapters
     };
   } catch (error) {

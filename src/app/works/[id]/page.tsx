@@ -48,7 +48,8 @@ export default async function WorkDetailPage({ params }: PageProps) {
       {series && (
         <div className="card mb-6 bg-stone-100 border-stone-300">
           <h2 className="text-lg font-medium text-stone-800 mb-2">系列：{series.name}</h2>
-          <p className="text-stone-600 mb-3">{series.description}</p>
+          <p className="text-stone-600 mb-3 whitespace-pre-wrap">{series.description}</p>
+          <div className="h-3"></div>
           <Link href={`/series/${series.id}`} className="text-emerald-700 hover:text-emerald-800">
             查看系列全部作品 →
           </Link>
@@ -56,7 +57,6 @@ export default async function WorkDetailPage({ params }: PageProps) {
       )}
 
       <div className="card mb-6">
-        <h2 className="text-xl font-medium text-stone-800 mb-3">简介</h2>
         <p className="text-stone-600 whitespace-pre-wrap">{work.summary}</p>
       </div>
 
