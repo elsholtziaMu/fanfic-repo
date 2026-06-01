@@ -148,7 +148,7 @@ export default async function ChapterPage({ params }: PageProps) {
         )}
 
         <div
-          className="prose prose-stone max-w-none"
+          className="prose prose-stone max-w-none px-6 py-12"
           dangerouslySetInnerHTML={{ __html: bodyContent.content }}
         />
 
@@ -239,7 +239,7 @@ function OneshotView({ work, chapter, comments }: { work: any; chapter: any; com
         )}
 
         <div
-          className="prose prose-stone max-w-none"
+          className="prose prose-stone max-w-none px-6 py-12"
           dangerouslySetInnerHTML={{ __html: bodyContent.content }}
         />
 

@@ -5,6 +5,7 @@ const { JSDOM } = require('jsdom');
 const CONTENT_DIR = path.join(__dirname, '..', 'public', 'content', 'works');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'works.json');
 const SERIES_OUTPUT_FILE = path.join(__dirname, '..', 'data', 'series.json');
+const TAGS_FILE = path.join(__dirname, '..', 'data', 'tags.json');
 
 function getDates(meta) {
   const today = new Date().toISOString().split('T')[0];
@@ -23,6 +24,45 @@ function getDates(meta) {
   };
 }
 
+function trimContent(content) {
+  let trimmed = content;
+  
+  trimmed = trimmed.replace(/^\s*<body[^>]*>\s*/i, '<body>');
+  trimmed = trimmed.replace(/\s*<\/body>\s*$/i, '</body>');
+  
+  trimmed = trimmed.replace(/<body>\s*/i, '<body>');
+  trimmed = trimmed.replace(/\s*<\/body>/i, '</body>');
+  
+  const emptyDivPattern = /<div[^>]*display:contents[^>]*>\s*<p[^>]*>\s*<\/p>\s*<\/div>/gi;
+  const hrDivPattern = /<div[^>]*display:contents[^>]*>\s*<hr[^>]*\/?>\s*<\/div>/gi;
+  
+  while (true) {
+    const beforeBody = trimmed.match(/<body>([\s\S]*?)(<div[^>]*display:contents[^>]*>\s*<(p|hr)[^>]*>[\s\S]*?<\/div>)/i);
+    if (beforeBody) {
+      const afterBody = beforeBody[1];
+      if (afterBody.trim() === '' || /^[\s]*$/.test(afterBody)) {
+        trimmed = trimmed.replace(/<body>\s*<div[^>]*display:contents[^>]*>\s*<(p|hr)[^>]*>[\s\S]*?<\/div>/i, '<body>');
+        continue;
+      }
+    }
+    break;
+  }
+  
+  while (true) {
+    const beforeEnd = trimmed.match(/(<div[^>]*display:contents[^>]*>\s*<(p|hr)[^>]*>[\s\S]*?<\/div>)([\s\S]*?)<\/body>/i);
+    if (beforeEnd) {
+      const afterHr = beforeEnd[3];
+      if (afterHr.trim() === '' || /^[\s]*$/.test(afterHr)) {
+        trimmed = trimmed.replace(/<div[^>]*display:contents[^>]*>\s*<(p|hr)[^>]*>[\s\S]*?<\/div>\s*<\/body>/i, '</body>');
+        continue;
+      }
+    }
+    break;
+  }
+  
+  return trimmed;
+}
+
 async function readHtmlFile(filePath) {
   try {
     const content = await fs.readFile(filePath, 'utf8');
@@ -31,8 +71,57 @@ async function readHtmlFile(filePath) {
 
     const body = document.querySelector('body') || document;
 
+    const pageTitle = body.querySelector('.page-title');
+    if (pageTitle) {
+      const header = pageTitle.closest('header');
+      if (header) {
+        header.remove();
+      } else {
+        pageTitle.remove();
+      }
+    }
+
     const callouts = body.querySelectorAll('.callout');
     callouts.forEach(el => el.remove());
+
+    const pageBody = body.querySelector('.page-body');
+    const targetElement = pageBody || body;
+
+    function isEmptyElement(el) {
+      if (!el) return false;
+      const tagName = el.tagName.toLowerCase();
+      
+      if (tagName === 'p') {
+        return !el.textContent || el.textContent.trim() === '';
+      }
+      
+      if (tagName === 'hr') {
+        return true;
+      }
+      
+      if (tagName === 'div') {
+        const style = el.getAttribute('style') || '';
+        if (style.includes('display:contents')) {
+          const children = el.children;
+          if (children.length === 1) {
+            return isEmptyElement(children[0]);
+          }
+          if (children.length === 0) {
+            return true;
+          }
+        }
+      }
+      
+      return false;
+    }
+
+    while (targetElement.firstElementChild && isEmptyElement(targetElement.firstElementChild)) {
+      targetElement.firstElementChild.remove();
+    }
+
+    while (targetElement.lastElementChild && isEmptyElement(targetElement.lastElementChild)) {
+      targetElement.lastElementChild.remove();
+    }
 
     let textContent = body.textContent || '';
 
@@ -50,8 +139,10 @@ async function readHtmlFile(filePath) {
     const title = document.querySelector('title')?.textContent ||
                   path.basename(filePath, '.html');
 
+    const cleanedContent = trimContent(dom.serialize());
+
     return {
-      content: content,
+      content: cleanedContent,
       textContent: textContent.trim(),
       wordCount: wordCount
     };
@@ -253,6 +344,59 @@ async function processStandaloneSerial(workPath, workId) {
   }
 }
 
+async function updateTags(works) {
+  try {
+    let tagsConfig = { categories: [] };
+    
+    try {
+      const tagsContent = await fs.readFile(TAGS_FILE, 'utf8');
+      tagsConfig = JSON.parse(tagsContent);
+    } catch (e) {
+      console.log('⚠️  未找到 tags.json，将创建新文件');
+    }
+
+    const allTags = {};
+    
+    works.forEach(work => {
+      if (work.tags) {
+        Object.keys(work.tags).forEach(categoryId => {
+          if (!allTags[categoryId]) {
+            allTags[categoryId] = new Set();
+          }
+          work.tags[categoryId].forEach(tag => {
+            allTags[categoryId].add(tag);
+          });
+        });
+      }
+    });
+
+    tagsConfig.categories.forEach(category => {
+      const categoryTags = allTags[category.id] || new Set();
+      
+      category.tags.forEach(tag => {
+        categoryTags.add(tag);
+      });
+      
+      category.tags = [...categoryTags].sort();
+      delete allTags[category.id];
+    });
+
+    Object.keys(allTags).forEach(categoryId => {
+      tagsConfig.categories.push({
+        id: categoryId,
+        name: categoryId,
+        tags: [...allTags[categoryId]].sort()
+      });
+    });
+
+    await fs.writeFile(TAGS_FILE, JSON.stringify(tagsConfig, null, 2), 'utf8');
+    console.log(`✅ 成功更新 tags.json`);
+    
+  } catch (error) {
+    console.error('❌ 更新 tags.json 时出错:', error);
+  }
+}
+
 async function generateData() {
   console.log('🔄 开始扫描HTML文件...');
 
@@ -300,6 +444,8 @@ async function generateData() {
 
     await fs.writeFile(OUTPUT_FILE, JSON.stringify(works, null, 2), 'utf8');
     await fs.writeFile(SERIES_OUTPUT_FILE, JSON.stringify(seriesList, null, 2), 'utf8');
+
+    await updateTags(works);
 
     console.log(`✅ 成功生成 ${works.length} 部作品`);
     console.log(`✅ 成功生成 ${seriesList.length} 个系列`);

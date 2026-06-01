@@ -4,9 +4,10 @@
   "tags": {
     "au": ["现背", "卡布叻男团"],
     "attribute": ["正苏"],
-    "cp_type": ["BL深右"],
+    "cp_type": ["BL"],
     "main_char": ["周深", "卡布"],
-    "relationship": ["水仙", "卡布深"],
+    "relationship": ["卡布深"],
+    "relationship-type": ["水仙"],
     "status": ["连载中"],
     "rating": ["R18"]
   },
