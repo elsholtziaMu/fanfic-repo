@@ -160,7 +160,12 @@ function WorkCard({ work }: { work: Work }) {
       </div>
       <p className="text-stone-600 mt-3 whitespace-pre-wrap">{work.summary}</p>
       <div className="flex flex-wrap gap-2 mt-3">
-        {Object.entries(work.tags).map(([categoryId, tags]) =>
+        {work.tags.relationship && work.tags.relationship.map(tag => (
+          <span key={`relationship-${tag}`} className="px-2.5 py-1 rounded-full text-xs bg-violet-100 text-violet-800 border border-violet-300">
+            {tag}
+          </span>
+        ))}
+        {Object.entries(work.tags).filter(([categoryId]) => categoryId !== 'relationship').map(([categoryId, tags]) =>
           tags.map(tag => (
             <span key={`${categoryId}-${tag}`} className="tag">
               {tag}
