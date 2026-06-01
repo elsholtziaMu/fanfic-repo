@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Work } from '@/lib/types'
 import { getSeriesById } from '@/lib/data'
+import Tag, { CATEGORY_ORDER } from '@/components/Tag'
 
 interface WorkCardProps {
   work: Work
@@ -12,6 +13,15 @@ interface WorkCardProps {
 export default function WorkCard({ work, showType = true, showWordCount = true, showUpdatedAt = true }: WorkCardProps) {
   const totalWords = work.chapters.reduce((sum, ch) => sum + ch.wordCount, 0)
   const series = work.seriesId ? getSeriesById(work.seriesId) : null
+
+  const sortedTagEntries: [string, string[]][] = Object.entries(work.tags).sort(([a], [b]) => {
+    const ai = CATEGORY_ORDER.indexOf(a as typeof CATEGORY_ORDER[number])
+    const bi = CATEGORY_ORDER.indexOf(b as typeof CATEGORY_ORDER[number])
+    if (ai === -1 && bi === -1) return 0
+    if (ai === -1) return 1
+    if (bi === -1) return -1
+    return ai - bi
+  })
 
   return (
     <div className="card hover:shadow-lg transition-shadow">
@@ -50,16 +60,9 @@ export default function WorkCard({ work, showType = true, showWordCount = true, 
       <p className="text-stone-600 mt-3 whitespace-pre-wrap">{work.summary}</p>
 
       <div className="flex flex-wrap gap-2 mt-3">
-        {work.tags.relationship && work.tags.relationship.map(tag => (
-          <span key={`relationship-${tag}`} className="px-2.5 py-1 rounded-full text-xs bg-violet-100 text-violet-800 border border-violet-300">
-            {tag}
-          </span>
-        ))}
-        {Object.entries(work.tags).filter(([categoryId]) => categoryId !== 'relationship').map(([categoryId, tags]) =>
+        {sortedTagEntries.map(([categoryId, tags]) =>
           tags.map(tag => (
-            <span key={`${categoryId}-${tag}`} className="tag">
-              {tag}
-            </span>
+            <Tag key={`${categoryId}-${tag}`} category={categoryId} tag={tag} />
           ))
         )}
       </div>
