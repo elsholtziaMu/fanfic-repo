@@ -46,7 +46,7 @@ export default function SeriesCard({ series, showType = true, showWordCount = tr
         </div>
       </div>
 
-      <p className="text-stone-500 mt-3 whitespace-pre-wrap italic">{series.description}</p>
+      <p className="text-stone-600 mt-3 whitespace-pre-wrap">{series.description}</p>
 
       <div className="mt-4">
         <h4 className="text-sm font-medium text-stone-700 mb-2">系列作品</h4>
