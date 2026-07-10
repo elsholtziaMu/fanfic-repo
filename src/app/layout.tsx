@@ -17,6 +17,15 @@ export default function RootLayout({
 
   return (
     <html lang="zh-CN">
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('contextmenu', function(e) {
+              e.preventDefault();
+            });
+          `
+        }} />
+      </head>
       <body className="min-h-screen bg-stone-100">
         <header className="bg-stone-200/80 border-b border-stone-300">
           <nav className="max-w-6xl mx-auto px-4 py-5">
