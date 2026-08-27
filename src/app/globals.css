@@ -38,5 +38,33 @@ h1, h2, h3, h4 {
 }
 
 a {
-  @apply text-emerald-900 hover:text-emerald-800 transition-colors no-underline;
+  @apply text-emerald-900 hover:text-emerald-800 transition-colors;
+}
+
+/* 全站禁用链接下划线。
+   作品遗留 CSS 经 <link>/<style> 注入且晚于本文件加载，
+   其中含 a{text-decoration:underline}，同优先级会反超，
+   因此这里必须用 !important 强制压制 */
+a,
+a:hover,
+a:focus {
+  text-decoration: none !important;
+}
+
+/* 阅读区正文字号与行距：由 ReadingArea 控件通过 CSS 变量动态调节 */
+/* 默认 18px / 1.5 */
+.reading-root .prose {
+  font-size: var(--reader-font-size, 18px);
+  line-height: var(--reader-line-height, 1.5);
+}
+
+/* 阅读区列表标记恢复：Tailwind Preflight 清空了 list-style，
+   而 Notion 导出样式假定浏览器默认标记（其 ol 自带 start 编号）。
+   注意不要提到 to-do/toggle 列表——它们的 li 上有自己的 list-style: none */
+.reading-root .prose ol {
+  list-style: decimal;
+}
+
+.reading-root .prose ul {
+  list-style: disc;
 }

@@ -13,6 +13,11 @@ export default function HomePage() {
 
       <section className="card">
         <h2 className="text-xl font-medium text-stone-800 mb-4">欢迎来到 {config.title}</h2>
+        <p className="text-gray-600">匿名提问箱：
+              <a href="https://www.pome.vip/oCLtbu57" target="_blank" rel="noopener noreferrer" className="text-emerald-800 hover:text-emerald-700">
+                POME
+              </a> 
+        </p>
         <p className="text-stone-600 mb-6">{config.subtitle}</p>
         <div className="flex flex-col gap-4">
           <Link href="/recommendations" className="btn-primary text-center">

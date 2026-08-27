@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Work } from '@/lib/types'
 import { getSeriesById } from '@/lib/data'
-import Tag, { CATEGORY_ORDER } from '@/components/Tag'
+import WorkTags from '@/components/WorkTags'
 
 interface WorkCardProps {
   work: Work
@@ -10,24 +10,23 @@ interface WorkCardProps {
   showUpdatedAt?: boolean
 }
 
+// 单篇作品从总览直接进入正文，跳过目录页
+export function workHref(work: Work): string {
+  if (work.type === 'oneshot' && work.chapters.length > 0) {
+    return `/works/${encodeURIComponent(work.id)}/${encodeURIComponent(work.chapters[0].id)}`
+  }
+  return `/works/${encodeURIComponent(work.id)}`
+}
+
 export default function WorkCard({ work, showType = true, showWordCount = true, showUpdatedAt = true }: WorkCardProps) {
   const totalWords = work.chapters.reduce((sum, ch) => sum + ch.wordCount, 0)
   const series = work.seriesId ? getSeriesById(work.seriesId) : null
-
-  const sortedTagEntries: [string, string[]][] = Object.entries(work.tags).sort(([a], [b]) => {
-    const ai = CATEGORY_ORDER.indexOf(a as typeof CATEGORY_ORDER[number])
-    const bi = CATEGORY_ORDER.indexOf(b as typeof CATEGORY_ORDER[number])
-    if (ai === -1 && bi === -1) return 0
-    if (ai === -1) return 1
-    if (bi === -1) return -1
-    return ai - bi
-  })
 
   return (
     <div className="card hover:shadow-lg transition-shadow">
       <div className="flex justify-between items-start">
         <div>
-          <Link href={`/works/${work.id}`} className="text-xl font-medium text-emerald-900 hover:text-emerald-800">
+          <Link href={workHref(work)} className="text-xl font-medium text-emerald-900 hover:text-emerald-800">
             {work.title}
           </Link>
           <div className="flex gap-2 mt-1">
@@ -59,13 +58,7 @@ export default function WorkCard({ work, showType = true, showWordCount = true, 
 
       <p className="text-stone-600 mt-3 whitespace-pre-wrap">{work.summary}</p>
 
-      <div className="flex flex-wrap gap-2 mt-3">
-        {sortedTagEntries.map(([categoryId, tags]) =>
-          tags.map(tag => (
-            <Tag key={`${categoryId}-${tag}`} category={categoryId} tag={tag} />
-          ))
-        )}
-      </div>
+      <WorkTags work={work} />
     </div>
   )
 }

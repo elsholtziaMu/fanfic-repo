@@ -21,12 +21,14 @@
   "summary": "作品简介",
   "warning": "警告内容（可选，不填则不显示）",
   "tags": {
+    "attribute": ["正苏"],
     "au": ["ABO", "现代"],
     "cp_type": ["BL"],
     "main_char": ["角色A", "角色B"],
     "relationship": ["CP"],
-    "status": ["已完结"],
-    "rating": ["全年龄"]
+    "relationship-type": ["水仙"],
+    "rating": ["全年龄"],
+    "status": ["已完结"]
   },
   "createdAt": "2024-01-01",
   "updatedAt": "2024-01-01",

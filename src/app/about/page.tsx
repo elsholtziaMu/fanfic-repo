@@ -23,6 +23,11 @@ export default function AboutPage() {
               </a> 
               &nbsp;&nbsp;(需要登录)
             </p>
+            <p className="text-gray-600">匿名提问箱：
+              <a href="https://www.pome.vip/oCLtbu57" target="_blank" rel="noopener noreferrer" className="text-emerald-800 hover:text-emerald-700">
+                POME
+              </a> 
+            </p>
           </section>
           <section>
             <h2 className="text-xl font-bold text-gray-700 mb-2">联系方式</h2>

@@ -8,6 +8,7 @@
     "start": "next start -p 3002",
     "lint": "next lint",
     "import": "node scripts/import-html.js",
+    "clean": "node scripts/clean-html.js",
     "download-comments": "node scripts/download-comments.js"
   },
   "dependencies": {

@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { getWorkById, getSeriesById } from '@/lib/data'
 import { Work, Chapter, Series, Comment } from '@/lib/types'
 import CommentSection from '@/components/CommentSection'
+import ReadingArea from '@/components/ReadingArea'
+import WorkTags from '@/components/WorkTags'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3003/api'
 
@@ -22,11 +24,21 @@ interface PageProps {
 
 
 
+const SHARED_STYLES_HREF = '/content/works-shared.css'
+
+function SharedStylesLink() {
+  return <link rel="stylesheet" href={SHARED_STYLES_HREF} />
+}
+
 function extractBody(html: string): { content: string; styles: string } {
-  const styleMatch = html.match(/<style[^>]*>([\s\S]*?)<\/style>/i)
-  let styles = styleMatch ? styleMatch[1] : ''
-  styles = styles.replace(/text-decoration:\s*underline;?/gi, 'text-decoration: none;')
-  
+  const styleParts: string[] = []
+  const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/gi
+  let match
+  while ((match = styleRegex.exec(html))) {
+    styleParts.push(match[1].replace(/text-decoration:\s*underline;?/gi, 'text-decoration: none;'))
+  }
+  const styles = styleParts.join('\n')
+
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
   if (bodyMatch) {
     let content = bodyMatch[1]
@@ -116,50 +128,53 @@ export default async function ChapterPage({ params }: PageProps) {
 
       {seriesInfo && (
         <div className="card mb-6 bg-stone-100 border-stone-300">
-          <div className="flex justify-between items-center flex-wrap gap-4">
-            {seriesInfo.prev ? (
-              <Link href={`/works/${seriesInfo.prev.id}`} className="text-emerald-700 hover:text-emerald-800">
-                ← {seriesInfo.prev.title}
-              </Link>
-            ) : (
-              <span />
-            )}
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div className="justify-self-start">
+              {seriesInfo.prev ? (
+                <Link href={`/works/${seriesInfo.prev.id}`} className="text-emerald-700 hover:text-emerald-800">
+                  ← {seriesInfo.prev.title}
+                </Link>
+              ) : null}
+            </div>
             <Link href={`/series/${series!.id}`} className="font-medium text-emerald-900">
               {series!.name} 系列
             </Link>
-            {seriesInfo.next ? (
-              <Link href={`/works/${seriesInfo.next.id}`} className="text-emerald-700 hover:text-emerald-800">
-                {seriesInfo.next.title} →
-              </Link>
-            ) : (
-              <span />
-            )}
+            <div className="justify-self-end">
+              {seriesInfo.next ? (
+                <Link href={`/works/${seriesInfo.next.id}`} className="text-emerald-700 hover:text-emerald-800">
+                  {seriesInfo.next.title} →
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
       )}
 
-      <article className="card">
-        {bodyContent.styles && (
-          <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
-        )}
-        {currentChapter.beginNote && (
-          <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.beginNote}</p>
-          </div>
-        )}
+      <ReadingArea>
+        <article className="card">
+          <SharedStylesLink />
+          {bodyContent.styles && (
+            <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
+          )}
+          {currentChapter.beginNote && (
+            <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+              <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.beginNote}</p>
+            </div>
+          )}
 
-        <div
-          className="prose prose-stone max-w-none px-6 py-12"
-          dangerouslySetInnerHTML={{ __html: bodyContent.content }}
-        />
+          <div
+            className="prose prose-stone max-w-none px-6 py-12"
+            dangerouslySetInnerHTML={{ __html: bodyContent.content }}
+          />
 
-        {currentChapter.endNote && (
-          <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
-            <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.endNote}</p>
-          </div>
-        )}
-      </article>
+          {currentChapter.endNote && (
+            <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+              <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
+              <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.endNote}</p>
+            </div>
+          )}
+        </article>
+      </ReadingArea>
 
       <div className="card mt-6">
         <nav className="flex justify-center gap-4 flex-wrap">
@@ -185,24 +200,24 @@ export default async function ChapterPage({ params }: PageProps) {
 
       {seriesInfo && (
         <div className="card mt-6 bg-stone-100 border-stone-300">
-          <div className="flex justify-between items-center flex-wrap gap-4">
-            {seriesInfo.prev ? (
-              <Link href={`/works/${seriesInfo.prev.id}`} className="text-emerald-700 hover:text-emerald-800">
-                ← {seriesInfo.prev.title}
-              </Link>
-            ) : (
-              <span />
-            )}
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div className="justify-self-start">
+              {seriesInfo.prev ? (
+                <Link href={`/works/${seriesInfo.prev.id}`} className="text-emerald-700 hover:text-emerald-800">
+                  ← {seriesInfo.prev.title}
+                </Link>
+              ) : null}
+            </div>
             <Link href={`/series/${series!.id}`} className="font-medium text-emerald-900">
               {series!.name} 系列
             </Link>
-            {seriesInfo.next ? (
-              <Link href={`/works/${seriesInfo.next.id}`} className="text-emerald-700 hover:text-emerald-800">
-                {seriesInfo.next.title} →
-              </Link>
-            ) : (
-              <span />
-            )}
+            <div className="justify-self-end">
+              {seriesInfo.next ? (
+                <Link href={`/works/${seriesInfo.next.id}`} className="text-emerald-700 hover:text-emerald-800">
+                  {seriesInfo.next.title} →
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
       )}
@@ -214,51 +229,58 @@ export default async function ChapterPage({ params }: PageProps) {
 
 function OneshotView({ work, chapter, comments }: { work: Work; chapter: Chapter; comments: Comment[] }) {
   const bodyContent = extractBody(chapter.content)
+  const totalWords = work.chapters.reduce((sum, ch) => sum + ch.wordCount, 0)
+  const statusTag = work.tags.status && work.tags.status.length > 0 ? work.tags.status[0] : null
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="card mb-6">
         <h1 className="text-2xl font-medium text-stone-800">{work.title}</h1>
+        <div className="flex flex-wrap gap-2 mt-3 items-center">
+          {statusTag && (
+            <span className="text-sm px-3 py-1 rounded bg-amber-100 text-amber-800 border border-amber-400">
+              {statusTag}
+            </span>
+          )}
+          <span className="text-sm px-3 py-1 rounded bg-stone-200 text-stone-600">
+            {totalWords.toLocaleString()} 字
+          </span>
+        </div>
+        <WorkTags work={work} hideCategories={['status']} />
       </div>
 
-      <div className="card mb-6">
-        <nav className="flex justify-center gap-4 flex-wrap">
-          <Link href={`/works/${work.id}`} className="btn-secondary">
-            目录
-          </Link>
-        </nav>
-      </div>
+      {work.summary && (
+        <div className="card mb-6">
+          <p className="text-stone-600 whitespace-pre-wrap">{work.summary}</p>
+        </div>
+      )}
 
-      <article className="card">
-        {bodyContent.styles && (
-          <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
-        )}
-        {chapter.beginNote && (
-          <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <p className="text-stone-700 whitespace-pre-wrap">{chapter.beginNote}</p>
-          </div>
-        )}
+      {chapter.beginNote && (
+        <div className="card mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+          <p className="text-stone-700 whitespace-pre-wrap">{chapter.beginNote}</p>
+        </div>
+      )}
 
-        <div
-          className="prose prose-stone max-w-none px-6 py-12"
-          dangerouslySetInnerHTML={{ __html: bodyContent.content }}
-        />
+      <ReadingArea>
+        <article className="card">
+          <SharedStylesLink />
+          {bodyContent.styles && (
+            <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
+          )}
 
-        {chapter.endNote && (
-          <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
-            <p className="text-stone-700 whitespace-pre-wrap">{chapter.endNote}</p>
-          </div>
-        )}
-      </article>
+          <div
+            className="prose prose-stone max-w-none px-6 py-12"
+            dangerouslySetInnerHTML={{ __html: bodyContent.content }}
+          />
 
-      <div className="card mt-6">
-        <nav className="flex justify-center gap-4 flex-wrap">
-          <Link href={`/works/${work.id}`} className="btn-secondary">
-            目录
-          </Link>
-        </nav>
-      </div>
+          {chapter.endNote && (
+            <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
+              <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
+              <p className="text-stone-700 whitespace-pre-wrap">{chapter.endNote}</p>
+            </div>
+          )}
+        </article>
+      </ReadingArea>
 
       <CommentSection workId={work.id} initialComments={comments} />
     </div>

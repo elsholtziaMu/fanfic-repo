@@ -1,11 +1,26 @@
 const fs = require('fs').promises;
 const path = require('path');
 const { JSDOM } = require('jsdom');
+const { cleanAll } = require('./clean-html');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'public', 'content', 'works');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'works.json');
 const SERIES_OUTPUT_FILE = path.join(__dirname, '..', 'data', 'series.json');
 const TAGS_FILE = path.join(__dirname, '..', 'data', 'tags.json');
+
+// 清洗 tags：缺失/非数组/去空白后为空的分类一律不生成，
+// 条目 trim、去重；返回值保证 Record<string, string[]>
+function sanitizeTags(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
+  const clean = {};
+  for (const [categoryId, value] of Object.entries(raw)) {
+    if (!Array.isArray(value)) continue;
+    const items = [...new Set(value.map(t => String(t).trim()).filter(Boolean))];
+    if (items.length === 0) continue;
+    clean[categoryId] = items;
+  }
+  return clean;
+}
 
 function getDates(meta) {
   const today = new Date().toISOString().split('T')[0];
@@ -166,7 +181,7 @@ async function processOneshot(workPath, workId) {
       seriesOrder: null,
       summary: meta.summary || '',
       warning: meta.warning || '',
-      tags: meta.tags || {},
+      tags: sanitizeTags(meta.tags),
       wordCount: htmlData.wordCount,
       createdAt: dates.createdAt,
       updatedAt: dates.updatedAt,
@@ -266,7 +281,7 @@ async function processSerialWork(workPath, workId, seriesId) {
       seriesOrder: meta.order || 0,
       summary: meta.summary || '',
       warning: meta.warning || '',
-      tags: meta.tags || {},
+      tags: sanitizeTags(meta.tags),
       wordCount: totalWordCount,
       createdAt: dates.createdAt,
       updatedAt: dates.updatedAt,
@@ -326,7 +341,7 @@ async function processStandaloneSerial(workPath, workId) {
       seriesOrder: null,
       summary: meta.summary || '',
       warning: meta.warning || '',
-      tags: meta.tags || {},
+      tags: sanitizeTags(meta.tags),
       wordCount: totalWordCount,
       createdAt: dates.createdAt,
       updatedAt: dates.updatedAt,
@@ -395,6 +410,8 @@ async function generateData() {
   console.log('🔄 开始扫描HTML文件...');
 
   try {
+    cleanAll();
+
     await fs.mkdir(CONTENT_DIR, { recursive: true });
 
     const entries = await fs.readdir(CONTENT_DIR, { withFileTypes: true });

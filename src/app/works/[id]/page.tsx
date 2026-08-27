@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getWorkById, getSeriesById } from '@/lib/data'
+import WorkTags from '@/components/WorkTags'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -26,7 +27,7 @@ export default async function WorkDetailPage({ params }: PageProps) {
     <div className="max-w-4xl mx-auto">
       <div className="card mb-6">
         <h1 className="text-3xl font-medium text-stone-800">{work.title}</h1>
-        <div className="flex flex-wrap gap-2 mt-3 items-center">
+        <div className="flex flex-wrap gap-2 mt-3">
           <span className={`text-sm px-3 py-1 rounded ${work.type === 'serial' ? 'bg-emerald-100 text-emerald-800' : 'bg-stone-200 text-stone-700'}`}>
             {work.type === 'serial' ? '连载' : '单篇'}
           </span>
@@ -34,20 +35,7 @@ export default async function WorkDetailPage({ params }: PageProps) {
             {totalWords.toLocaleString()} 字
           </span>
         </div>
-        <div className="flex flex-wrap gap-2 mt-3">
-          {work.tags.relationship && work.tags.relationship.map(tag => (
-            <span key={`relationship-${tag}`} className="px-2.5 py-1 rounded-full text-xs bg-violet-100 text-violet-800 border border-violet-300">
-              {tag}
-            </span>
-          ))}
-          {Object.entries(work.tags).filter(([categoryId]) => categoryId !== 'relationship').map(([categoryId, tags]) =>
-            tags.map(tag => (
-              <span key={`${categoryId}-${tag}`} className="tag">
-                {tag}
-              </span>
-            ))
-          )}
-        </div>
+        <WorkTags work={work} />
       </div>
 
       {series && (

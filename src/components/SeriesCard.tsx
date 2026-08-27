@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Series, Work } from '@/lib/types'
 import { getWorkById } from '@/lib/data'
 import Tag, { CATEGORY_ORDER } from '@/components/Tag'
+import { workHref } from '@/components/WorkCard'
 
 interface SeriesCardProps {
   series: Series
@@ -95,7 +96,7 @@ export default function SeriesCard({ series, showType = true, showWordCount = tr
           {works.map((work, index) => (
             <li key={work.id} className="flex items-baseline gap-2">
               <span className="text-emerald-700 text-sm">{index + 1}.</span>
-              <Link href={`/works/${encodeURIComponent(work.id)}`} className="text-stone-700 hover:text-emerald-800">
+              <Link href={workHref(work)} className="text-stone-700 hover:text-emerald-800">
                 {work.title}
               </Link>
               <span className="text-xs text-stone-500">
