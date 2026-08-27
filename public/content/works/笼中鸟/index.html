@@ -1,0 +1,848 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>笼中鸟</title><meta name="data-notion-page-icon" content="/icons/tag_yellow.svg"/><link rel="icon" href="https://app.notion.com/icons/tag_yellow.svg"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="22d93093-fb6c-80b1-aa6d-fbd8ce3e75ca" class="page sans" data-notion-page-icon="/icons/tag_yellow.svg"><div class="page-body"><p id="22d93093-fb6c-8083-8980-dac2e133684a" class="" dir="auto">
+</p><p id="22d93093-fb6c-8001-9463-e819f1cb3bd4" class="" dir="auto">他说想跟你一起去看海。</p><p id="22d93093-fb6c-801f-a8d1-f66312b176c2" class="" dir="auto">一起抱着椰子坐在大伞下，就这么坐着。看海天一色，看日落，看星星。他说不知道会不会有海鸥来抢薯条，这个季节能不能吃上好的海鲜。他没提下水的事情，你当然也不会让他为难。</p><p id="22d93093-fb6c-800e-bac9-d9ebd436d183" class="" dir="auto">你说，可以去本地人的菜市场买水果吃。</p><p id="22d93093-fb6c-8075-9d9d-d4c6f0472255" class="" dir="auto">你们分享着别人的游记和照片，就这样完成了一次旅行。</p><p id="22d93093-fb6c-80b4-b734-e45f3688ceb6" class="" dir="auto">
+</p><p id="22d93093-fb6c-805a-96d6-c78cabd27a02" class="" dir="auto">他像是突然想到了什么，遗憾地笑了笑。“真的要看海的话，也只能宅在一间有海景的酒店房间了。”</p><p id="22d93093-fb6c-80dd-a106-e943fc890123" class="" dir="auto">
+</p><p id="22d93093-fb6c-809f-ac93-d4f71f18bc4a" class="" dir="auto">你知道他是真的想跟你一起旅游，可望梅止渴已经是你们能做的极限。</p><p id="22d93093-fb6c-80ae-942b-c471b6ca5475" class="" dir="auto">“宅着也有宅着的快乐，”你耸了耸肩。“我去外面买海鲜水果带回酒店，我们边看电影边吃。”</p><p id="22d93093-fb6c-8095-b2e6-f83ce527a1b3" class="" dir="auto">
+</p><p id="22d93093-fb6c-80dc-801c-c7778c740bfe" class="" dir="auto">“我会努力找个周末在海边的轻松工作的，”他半开玩笑地说道，“记得来看我。”</p><p id="22d93093-fb6c-8042-bb71-cabfefbec961" class="" dir="auto">
+</p><p id="22d93093-fb6c-804d-8f70-de208b36e0f8" class="" dir="auto">你摇了摇头，知道这段畅想该结束了。“你还是专心工作吧。”</p><p id="22d93093-fb6c-8051-83c5-e352c0ba7b52" class="" dir="auto">你们都懂你为什么不能跟去，再说便难免有些戳人痛处。</p><p id="22d93093-fb6c-8029-9770-dad2e56f66be" class="" dir="auto">你们最近总是这样，说到未来就像是在做梦，不知道除了维持现状还能往哪里走。</p><p id="22d93093-fb6c-8094-8ecb-ec0dfd989997" class="" dir="auto">但是没关系，你们还年轻，还有时间，还有一间可以躲避一切的小巢。</p><p id="22d93093-fb6c-804b-b8a3-d170f005d076" class="" dir="auto">
+</p><p id="22d93093-fb6c-801b-bf88-e527b81934a7" class="" dir="auto">
+</p><p id="22d93093-fb6c-80b8-a286-fa2b29701677" class="" dir="auto">他洗了澡，已经换上了宽松的睡衣。发梢还未吹干，一缕缕坠在额前。沐浴尚未散去的温度蒸得他的皮肤红红的。他靠在床板上，脑袋枕着你的肩，看你在手机上搜索白噪音。</p><p id="22d93093-fb6c-803d-af91-ebc2a49df0a7" class="" dir="auto">你点进一个视频，海浪声缓缓流出。海水起落的节奏同你们的呼吸差不多，你开始想象那是大海的呼吸声。</p><p id="22d93093-fb6c-80df-aed8-dc770c3c6c11" class="" dir="auto">
+</p><p id="22d93093-fb6c-8016-a4b8-c5f0af450518" class="" dir="auto">他静静听了一会，伸手轻轻搭住你的手腕。</p><p id="22d93093-fb6c-80a4-8b04-f0dc502051c9" class="" dir="auto">你知道他在想什么。</p><p id="22d93093-fb6c-808e-81cd-e3d3ff9ed60d" class="" dir="auto">他觉得你跟他谈恋爱很辛苦。可他从来都不会说“你辛苦了”——不是不想说，而是不敢说。</p><p id="22d93093-fb6c-80e8-8a19-d021e06a6a1a" class="" dir="auto">因为说出来就等于承认，你在爱一个不能被爱的人。</p><p id="22d93093-fb6c-8065-b8c5-e31a5cff250f" class="" dir="auto">他也不会问。他尊重你的决定，知道自己不该质疑你，不该可怜你。他知道你愿意走入这段感情的笼中，所以他用尽全力让这座笼子变得温暖。至于剩下那份残忍的不安，只有他自己默默承受。</p><p id="22d93093-fb6c-8057-b28d-f2beeb11ed64" class="" dir="auto">你都懂，却也只能沉默。</p><p id="22d93093-fb6c-80b0-93d6-f63f99cd731f" class="" dir="auto">
+</p><p id="22d93093-fb6c-80d3-b630-d1ed081fa7c3" class="" dir="auto">你转身扶住他的腰，凑上去吻他，交换你们口中一模一样的薄荷味。他轻轻回应着，柔软得像是海浪卷起细沙。你感觉到他捧住了你的脸，指间穿过你的头发，那是海水流过。</p><p id="22d93093-fb6c-803a-a1b9-cb48ddb513f8" class="" dir="auto">涨潮了。他的唇贴着你的，呼吸中夹杂着些颤抖的叹息。你们的牙齿不小心磕在一起，他身体一僵，被你扶着后颈拉了回来。</p><p id="22d93093-fb6c-809f-a47f-f460117a1bb1" class="" dir="auto">
+</p><p id="22d93093-fb6c-80a6-88b0-da891307052c" class="" dir="auto">可他并没有继续这个吻。他用鼻尖蹭着你的，唇瓣贴着你的唇角，像是还在留恋方才的触感。<br/>“你要睡了吗？”</p><p id="22d93093-fb6c-8092-89f9-c76eeaee6120" class="" dir="auto">
+</p><p id="22d93093-fb6c-8025-9e64-f64be4b8b616" class="" dir="auto">你看着他贴得这么近，睫毛垂着，呼吸着你的呼吸。这是一个小心翼翼的邀请。</p><p id="22d93093-fb6c-80dd-843a-ea41ccaf7eb2" class="" dir="auto">“还不想睡。”你重新吻上去。他顺从地歪过头，身体慢慢放松下来，像是收起翅膀窝作一团休息的小鸟。</p><p id="22d93093-fb6c-806c-a459-e4a3892260e7" class="" dir="auto">是啊，你的鸟儿回来了，就在你的怀抱里，温暖柔软，轻声细语都只为你。成为人们的欣赏物的鸟儿终于从灯光中退下，回到你们的笼中。</p><p id="22d93093-fb6c-806d-9b8d-c47ec06e20e5" class="" dir="auto">
+</p><p id="22d93093-fb6c-80dc-9426-cf4fe0339963" class="" dir="auto">他拧着身子找不到支撑，重量一点点落到了你身上。你在他唇角啄了啄，揽着他缓缓躺下。他半趴在你胸口，脑袋埋进你的颈侧，脸颊轻轻蹭了蹭你的锁骨。</p><p id="22d93093-fb6c-8010-b5e6-c9a6434c5058" class="" dir="auto">你抚着他的背，从肩胛到腰窝，再回到后颈。刚洗完澡的他身体还热热的，也像是一只小鸟。他在你耳边低声说着些什么，你却只听清了“喜欢”“好想你”“好不好……”</p><p id="22d93093-fb6c-80a5-9dd8-cadf238cbf9b" class="" dir="auto">你沉默着，不相信自己开口会发出的声音，只是抱着他轻轻翻了个身，将他圈在你的身体下。</p><p id="22d93093-fb6c-80b8-8ab0-f9abaa6fce80" class="" dir="auto">他也没有开口，就这样望着你。那双深黑的眸子里只有一点迷离的湿意。</p><p id="22d93093-fb6c-8065-8839-e399156d4b84" class="" dir="auto">你知道那之下是熊熊烈火。</p><p id="22d93093-fb6c-804a-b7a3-fcd367aa8d40" class="" dir="auto">
+</p><p id="22d93093-fb6c-8051-9482-d639c6475fc0" class="" dir="auto">
+</p><p id="22d93093-fb6c-8055-9686-fb924b8a52b9" class="" dir="auto">你慢慢吻下去，从唇到颌角，再到微凉的耳廓。唇瓣摩擦着他耳朵细腻的皮肤，你却还嫌他过敏的听觉刺激不够。你轻轻呵出一口气，得到他一声绵软的回音。</p><p id="22d93093-fb6c-8023-b837-c009360982bf" class="" dir="auto">“深，”你在他耳旁轻声唤他。鼻尖蹭着他的皮肤，让双唇重新贴上他的。</p><p id="22d93093-fb6c-80a7-8d1d-fb3229bad402" class="" dir="auto">
+</p><p id="22d93093-fb6c-80c0-91ad-ce0bbcf2f05a" class="" dir="auto">他唔唔应着，双手来到自己胸前，逐一解开了自己睡衣的扣子。你追着他的手，指尖分开布料，沿着他的皮肤一点点下滑，最终落在他睡裤边缘。你滑入一根手指，在他的小腹上来回扫动。</p><p id="22d93093-fb6c-809e-ba7d-fed1b2c0ba0a" class="" dir="auto">他不满足于你的逗弄，轻轻咬了一下你的嘴唇。他的防守从来都是进攻。你感觉到衣摆被撩起，一只温热的手贴上你腰间的皮肤，缓缓向上抚去。</p><p id="22d93093-fb6c-80ef-bbd0-c78de007584f" class="" dir="auto">“嗯……”你当然知道怎么对付你那不会防守的恋人。“不要，我想专心看你。”</p><p id="22d93093-fb6c-80b9-8083-e59c100c6445" class="" dir="auto">
+</p><p id="22d93093-fb6c-80f9-8ed2-e77da556c19d" class="" dir="auto">你们早过了会为展示自己而感到害羞的阶段。他眨了眨眼，妥协地收回手，轻轻勾住你支在他身侧的手臂，半阖着眼看向你。</p><p id="22d93093-fb6c-8088-94b0-cbda3dc0c12c" class="" dir="auto">“那你慢一点，”他的声音柔柔的，像是一声叹息。“我也想你了。”</p><p id="22d93093-fb6c-8020-8b69-ea1c69838525" class="" dir="auto">
+</p><p id="22d93093-fb6c-8017-9877-dc0840177c7e" class="" dir="auto">心底一热，翻涌的思念在被他点破的一刻才开始灼烧。你蹭了蹭他的脸颊，缓缓直起身，最终跨坐在他的骨盆上。他就这样在你身下安静地舒展开，迎接你的目光。</p><p id="22d93093-fb6c-8017-af93-d6d75f2c43dc" class="" dir="auto">你伸出手，指背扫过他的下巴、脖子，继续向下。他的胸膛在你掌下起伏，指尖传来他心跳的搏动。你触到的每一处都是细腻、柔软、放松的。你一时很难想象他为吸入更多空气而扩张到极限的肋骨、颤动的小腹、下意识蜷起的身体，不只是歌唱时，也同样在性事中。</p><p id="22d93093-fb6c-80b2-871c-f3453136e151" class="" dir="auto">无所谓从前和以后。你会如同初次一样探索他，如末次一样用这双眼睛这双手去感受他记住他。</p><p id="22d93093-fb6c-8021-8a75-c3ed4bff94c6" class="" dir="auto">
+</p><p id="22d93093-fb6c-80ea-89e7-d9f46d6fb888" class="" dir="auto">
+</p><p id="22d93093-fb6c-8047-ab5b-e755057382da" class="" dir="auto">你剥开他的睡衣，露出一片柔软的肉色。掌心短暂地流连温暖的皮肤后，你抬起手，指尖扫过深色的乳粒，换来一阵缩瑟。</p><p id="22d93093-fb6c-80e0-8beb-ec6b39574c3f" class="" dir="auto">你倾身下去，用嘴唇代替了指尖。舌尖缓缓碾过敏感的乳尖，感受着它在你的唇舌间变得坚硬。他的肋骨随着逐渐加快的呼吸起伏，他难耐地仰头拱起腰，却是将胸膛往你的方向送去。呻吟声从喉咙深处溢出，他开始颤抖。你知道这样的刺激于他根本不是对欲望的安抚，而是撩拨。可他舍不得你们太快，于是强忍着躁动，在你身下呜咽着。</p><p id="22d93093-fb6c-802c-8916-f83d5dc4153c" class="" dir="auto">
+</p><p id="22d93093-fb6c-805e-83e3-d0cb82ea6d0f" class="" dir="auto">你忽然想知道他究竟有多能忍。手掌顺着他的皮肤找到裤腰，再向下隔着睡裤的布料不轻不重地按揉。他下意识地扭动，像是要逃离，也像是在迎合。</p><p id="22d93093-fb6c-8010-bd6b-f5137c59aba0" class="" dir="auto">“你想多慢呢？”你沿着他的形状，用手指压下他睡裤的布料，“反正我不着急。”</p><p id="22d93093-fb6c-802d-bce8-d6726c47329a" class="" dir="auto">
+</p><p id="22d93093-fb6c-8038-8ccf-f332aa2ab8b9" class="" dir="auto">他张了张嘴，眼神已经有些涣散。</p><p id="22d93093-fb6c-807e-b073-e9a90ba9d71e" class="" dir="auto">“你抱抱我吧。”他最终笑着用手臂环住你。</p><p id="22d93093-fb6c-80a2-b46e-cdc684586733" class="" dir="auto">
+</p><p id="22d93093-fb6c-807c-b918-c36aa17ce7ea" class="" dir="auto">他抱着你的腰，带你翻身侧躺在床上。怀抱收紧，你被拢在他臂弯里，脑袋枕着他的肩。</p><p id="22d93093-fb6c-800d-8f49-d3eaf573f325" class="" dir="auto">被抱的是你，但提出要求的人似乎并不介意，反而满足地呼出了一口气。仿佛他身体里冒着泡的欲望只为这一个拥抱。</p><p id="22d93093-fb6c-802a-bcee-fd95af912ee4" class="" dir="auto">
+</p><p id="22d93093-fb6c-80bb-9bd0-e927bc706a05" class="" dir="auto">仿佛，只是仿佛。你扬起脸去吻他，很快又让他不安分地哼哼起来。你们的双腿缠在一起，他勃起的性器紧贴在你的腿根。你向前压去。</p><p id="22d93093-fb6c-80d2-a3ce-c131a088ba8b" class="" dir="auto">他呼吸一滞，在下意识的躲闪后又随着你迎了上来，却被你快速退开。</p><p id="22d93093-fb6c-802c-9bf0-e07d180300bb" class="" dir="auto">
+</p><p id="22d93093-fb6c-80b8-a031-ef2ebc6f5bd4" class="" dir="auto">乱七八糟的吻被打断，他喘息着看向你，你的注意力却被他泛着水光的双唇吸引过去。他发觉你的视线，下意识舔了舔唇。</p><p id="22d93093-fb6c-80ed-98cf-f40cde0520fe" class="" dir="auto">“你……”他开口，你看到他的舌尖。“你又逗我。”</p><p id="22d93093-fb6c-806f-901d-edf447c84b73" class="" dir="auto">
+</p><p id="22d93093-fb6c-80de-ac8f-dc68bc61c415" class="" dir="auto">你低低笑着，“我问你要多慢，你又不回答我。”</p><p id="22d93093-fb6c-8079-9f09-e6723781ee70" class="" dir="auto">手掌挤进两具身体之间，却只是隔着布料轻轻盖在他的鼓包上。</p><p id="22d93093-fb6c-8083-b55b-e6fca8ac3b67" class="" dir="auto">
+</p><p id="22d93093-fb6c-807a-812d-fe36c5e47a77" class="" dir="auto">他嘴一瘪，发出一声忍无可忍的咕哝，抓起你的手就往自己睡裤里塞。你乐得一头撞上他的胸口，差点又把他塞进去的手抽出来。</p><p id="22d93093-fb6c-8031-8db2-e93a4f17473a" class="" dir="auto">
+</p><p id="22d93093-fb6c-804a-b067-db78bc1ae26e" class="" dir="auto">他叫了你全名，在你手臂上轻轻拍了几下。“好坏啊烦死了！”</p><p id="22d93093-fb6c-809e-ac2c-ff36387451d3" class="" dir="auto">
+</p><p id="22d93093-fb6c-80aa-9a8e-f0ebeaebe702" class="" dir="auto">“好好好——”你咧着嘴，终于顺着他的皮肤找到了他的性器。他的身体在一瞬间绷起，又迅速放松下来，四肢八爪鱼一样缠上了你。</p><p id="22d93093-fb6c-80c1-bc83-ec89dafcfbec" class="" dir="auto">你舍不得让他再着急。指腹抹过敏感的柱头，虎口贴上柱身，再向下用手掌贴上整根物什。你开始动作，手指收拢紧握着他，缓慢有力地套弄着。</p><p id="22d93093-fb6c-80b4-a1c5-f2b459d8d9c1" class="" dir="auto">
+</p><p id="22d93093-fb6c-80f8-a556-d0edac2b0525" class="" dir="auto">你的恋人水一般化开了。你能感觉到他在瓦解，身体逐渐化为某种更柔软、更脆弱的东西。他彻底卸了力，就这样软软地包裹着你，将喘息和呻吟都吐进你的发丝。</p><p id="22d93093-fb6c-80ed-b3ab-d9bdd0cf6e60" class="" dir="auto">可惜你有些缺乏锻炼， 他很快习惯了下身的刺激，渐渐安静下来，用脸颊轻轻蹭着你的发顶和额头。你抽出手，在他迷蒙又不解的目光下压着他的肩膀，将他翻到身下。</p><p id="22d93093-fb6c-80ad-9806-c24eedbf4166" class="" dir="auto">
+</p><p id="22d93093-fb6c-804c-a05b-c8d23b4ac946" class="" dir="auto">你拍了拍他的裤腰，他便扭动着踢下了下身轻薄的遮盖。手肘撑在他身体两侧，你后退着俯下身去，从肚脐开始吻出一条湿润的痕迹。他的小腹在期待下紧绷颤动，你听见他逐渐加快的呼吸，伸手安慰地摸了摸他的腰。他提起双膝，向你完全敞开，无言地等待着你更多的触碰。</p><p id="22d93093-fb6c-80a6-9606-cef1ed8faa3b" class="" dir="auto">你在枕头下藏了一支润滑，不知什么时候已经被他摸出攥在手心。见你终于抬头，他抿着嘴替你拧开盖子，将凝胶挤在你伸出的手指上。你的手顺着他的腿根滑下，指尖触到穴口时引来一阵颤抖。</p><p id="22d93093-fb6c-8029-b964-cf3019c814b7" class="" dir="auto">
+</p><p id="22d93093-fb6c-807f-9bb6-f086953d08d5" class="" dir="auto">他开始调整呼吸，稍稍抬腰迎接你。你毫不费力地滑入一根手指，却已经让他仰着头呜咽起来。你不想浪费他的敏感，在简单的扩张后又加入一根手指。你刻意放慢动作，指尖在他体内一寸寸探寻，每一次轻微的动作都让他的腰轻轻摆动，像是在追逐你的节奏。他软软呻吟着，夹着你的腰的双腿开始颤抖，仿佛随时都要脱力落下。</p><p id="22d93093-fb6c-80f1-b6cd-ecfdd4c328ac" class="" dir="auto">他摸索着找到了你空余的手，你会意，同他十指相扣。你在他变化的呻吟间加快了手上的动作，而他用身体回应着你。柔软的内壁向你收紧，腰肢抬得更高了。他诚实地用肢体表达着他的感受，唯独不管快感如何教他闭上双眼，他总倔强地挣扎着看向你。</p><p id="22d93093-fb6c-809d-b2f4-c31550c7ca3c" class="" dir="auto">
+</p><p id="22d93093-fb6c-8083-a399-f40283f09c73" class="" dir="auto">他的气息越来越浅，嘴里只剩下一些细碎的呻吟。他皱着眉，在迷蒙中注意到你们交汇的目光，微张的双唇又向两边勾起。</p><p id="22d93093-fb6c-8032-9547-c3d348631ad7" class="" dir="auto">他在笑。你一惊，下意识想移开视线，对这淫靡的表情非礼勿视，双眼却被那对深黑的眸子牢牢锁定。脑袋里像是有什么东西崩断了，你从齿缝间吸入一口气，手指的力度愈来愈重，剩余不多的控制让你的每一次动作都碾过他最敏感的地方。你像是被他蛊惑，一切都只为引出他更美的样貌和声音。</p><p id="22d93093-fb6c-8080-811e-e301f5f8dc86" class="" dir="auto">
+</p><p id="22d93093-fb6c-80f9-94e9-d757d8b05ff1" class="" dir="auto">他忽然收紧了扣住你的手，挤得你无法回握，手指松松悬在空气中。可他好像还嫌不够，另一只手也握住了你的手掌。像是在害怕自己会随着不存在的水流漂走。</p><p id="22d93093-fb6c-804e-ace0-ebe27e722211" class="" dir="auto">
+</p><p id="22d93093-fb6c-8074-ac9f-da06f63e52ff" class="" dir="auto">“我在呢，深。”你艰难地弯起指尖点了点他的手背，“我在。”</p><p id="22d93093-fb6c-8015-b57a-d6687765cdb6" class="" dir="auto">
+</p><p id="22d93093-fb6c-801f-ad39-ed8135f4a443" class="" dir="auto">他恍惚松了手上的力道，内壁却是越收越紧。身前的躯体震颤着，他嘴里断断续续念着你的名字，最终都化为破碎的呻吟。</p><p id="22d93093-fb6c-803f-958c-d9f7edff6909" class="" dir="auto">
+</p><p id="22d93093-fb6c-8013-8676-fa4fc80b234e" class="" dir="auto">手指给的高潮温和而绵长。你看着他在高潮中颤抖，像风吹过细羽。他握着你的手，挡在面前。你看到泪珠滑落。</p><p id="22d93093-fb6c-802f-b4c0-dbfd7cf8653e" class="" dir="auto">又是一句不能说的话，掩饰在情欲的迷乱中。</p><p id="22d93093-fb6c-80ea-9cee-e37d9058159f" class="" dir="auto">
+</p><p id="22d93093-fb6c-80e6-98ad-d6ed10331c9a" class="" dir="auto">
+</p><p id="22d93093-fb6c-8060-9b2a-e0160857f179" class="" dir="auto">
+</p><p id="22d93093-fb6c-8024-8a1b-c703ac09e696" class="" dir="auto">你陪他重新洗了澡，出来时胸口已经多了一个深粉色的印子。终于将累得迷迷糊糊的他哄进被窝里，你熄了卧室的灯，钻到他身边躺下。</p><p id="22d93093-fb6c-8069-a582-e327800de3a5" class="" dir="auto">
+</p><p id="22d93093-fb6c-8094-b4b8-dbb74baa8480" class="" dir="auto">他背对着你，忽然用带着睡意的声音开了口。</p><p id="22d93093-fb6c-809f-af6b-e3fbf9de8696" class="" dir="auto">“我会不会有点自私？”</p><p id="22d93093-fb6c-80f3-8798-d6280e0d4149" class="" dir="auto">
+</p><p id="22d93093-fb6c-802f-88c4-edd9dd7942f2" class="" dir="auto">你伸出手，指尖缠上他的发梢，回答得很慢。</p><p id="22d93093-fb6c-80c2-a03b-f1f48c9030a5" class="" dir="auto">“那我也一样。”</p><p id="22d93093-fb6c-8066-a965-c49dcf7e3a52" class="" dir="auto">
+</p><p id="22d93093-fb6c-80a5-badb-f9e404df082f" class="" dir="auto">
+</p><p id="22d93093-fb6c-8045-b921-e19a08f48367" class="" dir="auto">他没再说什么。你望着他后脑柔软的发丝，渐渐听到均匀缓慢的呼吸声。你还舍不得睡去。因为天一亮，你的鸟儿就又要飞去你无法到达的地方。</p><p id="22d93093-fb6c-808c-ae9c-da3f0a24eb06" class="" dir="auto">你会等他，你会尽力让这个笼变得温暖，就像他做的那样。</p><p id="22d93093-fb6c-80f7-8913-dbe0821fc1ba" class="" dir="auto">
+</p><p id="22d93093-fb6c-8055-b276-d396c5d314f2" class="" dir="auto">去飞吧，去放声歌唱。我永远在这里。</p><p id="22d93093-fb6c-80d1-ab68-f1008d3803e8" class="" dir="auto">
+</p><p id="22d93093-fb6c-8039-aff1-f9731089ce57" class="" dir="auto">
+</p><p id="22d93093-fb6c-8085-9be3-e56df8b1a105" class="" dir="auto">
+</p><p id="22d93093-fb6c-801f-a958-f7e5311b8945" class="" dir="auto">
+</p><p id="22d93093-fb6c-80f0-b30c-d0140312cd10" class="" dir="auto">
+</p><p id="22d93093-fb6c-80a7-9d87-fd5be2bba4a3" class="" dir="auto">
+</p><p id="22d93093-fb6c-80df-a162-f3bc3ea4a790" class="" dir="auto">
+</p><p id="22d93093-fb6c-8032-ab23-ecf873abc635" class="" dir="auto">
+</p><aside class="block-color-teal_background callout" data-notion-callout="" data-notion-callout-icon="🪵" data-notion-callout-background="teal_background" style="white-space:pre-wrap;display:flex" id="22d93093-fb6c-8033-acc4-f66d7db9e932" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🪵"></span></div><div style="width:100%"><p id="22d93093-fb6c-8081-9654-f68e9f7e8fc7" class="" dir="auto">「笼中鸟」是《进击的巨人》的OST，于是会想到“看海”，以及洪流下只能存在于夹缝中的私情。一开始想写点给深口的，但是怕减弱深右味就没下手（因为其实已经很弱了）。都跟《进击的巨人》扯上关系了，能不吞点人体组织吗（开始地狱）。这才是正确的吃人方式啊（笑）</p></div></aside><p id="22d93093-fb6c-805d-b159-f3214a8cdcf5" class="" dir="auto">
+</p><p id="22d93093-fb6c-8037-8e77-fc926d240b12" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
