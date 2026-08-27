@@ -156,6 +156,11 @@ export default async function ChapterPage({ params }: PageProps) {
           {bodyContent.styles && (
             <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
           )}
+          {currentChapter.warning && (
+            <div className="mb-6 p-4 bg-amber-50 border-l-4 border-amber-400">
+              <p className="text-amber-800 whitespace-pre-wrap">{currentChapter.warning}</p>
+            </div>
+          )}
           {currentChapter.beginNote && (
             <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
               <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.beginNote}</p>
@@ -266,6 +271,11 @@ function OneshotView({ work, chapter, comments }: { work: Work; chapter: Chapter
           <SharedStylesLink />
           {bodyContent.styles && (
             <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
+          )}
+          {chapter.warning && (
+            <div className="mb-6 p-4 bg-amber-50 border-l-4 border-amber-400">
+              <p className="text-amber-800 whitespace-pre-wrap">{chapter.warning}</p>
+            </div>
           )}
 
           <div
