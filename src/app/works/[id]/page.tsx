@@ -75,13 +75,10 @@ export default async function WorkDetailPage({ params }: PageProps) {
         <h2 className="text-xl font-medium text-stone-800 mb-4">目录</h2>
         {work.chapters.length > 0 ? (
           <ul className="space-y-2">
-            {work.chapters.map((chapter, index) => (
+            {work.chapters.map(chapter => (
               <li key={chapter.id}>
                 <Link
-                  href={work.type === 'oneshot'
-                    ? `/works/${work.id}/${chapter.id}`
-                    : `/works/${work.id}/${chapter.id}`
-                  }
+                  href={`/works/${work.id}/${chapter.id}`}
                   className="text-emerald-900 hover:text-emerald-800 flex justify-between items-center"
                 >
                   <span>{chapter.title}</span>

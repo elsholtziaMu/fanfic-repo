@@ -16,7 +16,7 @@ export default function HomePage() {
         <p className="text-stone-600 mb-6">{config.subtitle}</p>
         <div className="flex flex-col gap-4">
           <Link href="/recommendations" className="btn-primary text-center">
-            主厨推荐
+            推荐
           </Link>
           <Link href="/works" className="btn-secondary text-center">
             作品总览

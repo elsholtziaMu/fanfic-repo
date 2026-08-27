@@ -1,5 +1,4 @@
 import { getConfig } from '@/lib/data'
-import Link from 'next/link'
 
 export default function AboutPage() {
   const config = getConfig()

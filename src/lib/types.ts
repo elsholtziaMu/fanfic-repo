@@ -31,6 +31,8 @@ export interface Chapter {
   id: string
   title: string
   content: string
+  beginNote?: string
+  endNote?: string
   wordCount: number
   updatedAt: string
 }
@@ -40,13 +42,6 @@ export interface Series {
   name: string
   description: string
   workIds: string[]
-}
-
-export interface Author {
-  id: string
-  name: string
-  description: string
-  link?: string
 }
 
 export interface Comment {

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getWorkById, getSeriesById, getWorks } from '@/lib/data'
+import { getWorkById, getSeriesById } from '@/lib/data'
+import { Work, Chapter, Series, Comment } from '@/lib/types'
 import CommentSection from '@/components/CommentSection'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3003/api'
@@ -141,9 +142,9 @@ export default async function ChapterPage({ params }: PageProps) {
         {bodyContent.styles && (
           <style dangerouslySetInnerHTML={{ __html: bodyContent.styles }} />
         )}
-        {(currentChapter as any).beginNote && (
+        {currentChapter.beginNote && (
           <div className="mb-6 p-4 bg-stone-100 border-l-4 border-stone-400">
-            <p className="text-stone-700 whitespace-pre-wrap">{(currentChapter as any).beginNote}</p>
+            <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.beginNote}</p>
           </div>
         )}
 
@@ -152,10 +153,10 @@ export default async function ChapterPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: bodyContent.content }}
         />
 
-        {(currentChapter as any).endNote && (
+        {currentChapter.endNote && (
           <div className="mt-6 p-4 bg-stone-100 border-l-4 border-stone-400">
             <h3 className="text-sm font-medium text-stone-600 mb-2">后记</h3>
-            <p className="text-stone-700 whitespace-pre-wrap">{(currentChapter as any).endNote}</p>
+            <p className="text-stone-700 whitespace-pre-wrap">{currentChapter.endNote}</p>
           </div>
         )}
       </article>
@@ -211,7 +212,7 @@ export default async function ChapterPage({ params }: PageProps) {
   )
 }
 
-function OneshotView({ work, chapter, comments }: { work: any; chapter: any; comments: any[] }) {
+function OneshotView({ work, chapter, comments }: { work: Work; chapter: Chapter; comments: Comment[] }) {
   const bodyContent = extractBody(chapter.content)
 
   return (
@@ -264,13 +265,13 @@ function OneshotView({ work, chapter, comments }: { work: any; chapter: any; com
   )
 }
 
-function getSeriesNavigation(work: any, series: any) {
+function getSeriesNavigation(work: Work, series: Series) {
   const worksInSeries = series.workIds
-    .map((id: string) => getWorkById(id))
-    .filter(Boolean)
-    .sort((a: any, b: any) => (a.seriesOrder || 0) - (b.seriesOrder || 0))
+    .map(id => getWorkById(id))
+    .filter((w): w is Work => w !== undefined)
+    .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0))
 
-  const currentIndex = worksInSeries.findIndex((w: any) => w.id === work.id)
+  const currentIndex = worksInSeries.findIndex(w => w.id === work.id)
 
   return {
     prev: currentIndex > 0 ? {

@@ -126,18 +126,12 @@ async function readHtmlFile(filePath) {
     let textContent = body.textContent || '';
 
     const chineseChars = textContent.match(/[\u4e00-\u9fff]/g) || [];
-    const chineseOnly = chineseChars.join('');
 
     const englishText = textContent.replace(/[\u4e00-\u9fff]/g, ' ');
     const englishWords = englishText.match(/[a-zA-Z]+/g) || [];
     const englishWordCount = englishWords.length;
 
-    const punctuationRemoved = textContent.replace(/[^\w\u4e00-\u9fff]/g, '');
-    const charsWithoutPunct = punctuationRemoved.match(/[\u4e00-\u9fff]|[a-zA-Z]+/g) || [];
     const wordCount = chineseChars.length + englishWordCount;
-
-    const title = document.querySelector('title')?.textContent ||
-                  path.basename(filePath, '.html');
 
     const cleanedContent = trimContent(dom.serialize());
 

@@ -1,10 +1,8 @@
-import { SiteConfig, TagCategory, Work, Series, Author, Comment, Recommendation } from './types'
+import { SiteConfig, TagCategory, Work, Series, Recommendation } from './types'
 import configData from '@/data/config.json'
 import tagsData from '@/data/tags.json'
 import worksData from '@/data/works.json'
 import seriesData from '@/data/series.json'
-import authorsData from '@/data/authors.json'
-import commentsData from '@/data/comments.json'
 import recommendationsData from '@/data/recommendations.json'
 
 export function getConfig(): SiteConfig {
@@ -15,15 +13,6 @@ export function getTagCategories(): TagCategory[] {
   return tagsData.categories as TagCategory[]
 }
 
-export function getAllTags(): Record<string, string[]> {
-  const categories = getTagCategories()
-  const tags: Record<string, string[]> = {}
-  categories.forEach(cat => {
-    tags[cat.id] = cat.tags
-  })
-  return tags
-}
-
 export function getWorks(): Work[] {
   return worksData as Work[]
 }
@@ -32,24 +21,8 @@ export function getWorkById(id: string): Work | undefined {
   return (worksData as Work[]).find(w => w.id === id)
 }
 
-export function getSeries(): Series[] {
-  return seriesData as Series[]
-}
-
 export function getSeriesById(id: string): Series | undefined {
   return (seriesData as Series[]).find(s => s.id === id)
-}
-
-export function getAuthors(): Author[] {
-  return authorsData as Author[]
-}
-
-export function getComments(): Comment[] {
-  return commentsData as Comment[]
-}
-
-export function getCommentsByWorkId(workId: string): Comment[] {
-  return (commentsData as Comment[]).filter(c => c.workId === workId)
 }
 
 export function getRecommendations(): Recommendation[] {

@@ -1,13 +1,13 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const RENDER_API_URL = 'https://fanfic-repo.onrender.com/api/comments';
+const API_URL = 'https://fanfic-comments.elsholtzia-mu.workers.dev/api/comments';
 const LOCAL_COMMENTS_PATH = path.join(__dirname, '..', 'data', 'comments.json');
 
 async function downloadComments() {
   try {
-    console.log('📥 正在从 Render 下载留言...');
-    const response = await fetch(RENDER_API_URL);
+    console.log('📥 正在从 Cloudflare Worker 下载留言...');
+    const response = await fetch(API_URL);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

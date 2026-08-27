@@ -38,7 +38,7 @@ export default function RootLayout({
                   作品总览
                 </Link>
                 <Link href="/recommendations" className="text-stone-700 hover:text-emerald-900 transition-colors">
-                  主厨推荐
+                  推荐
                 </Link>
                 <Link href="/about" className="text-stone-700 hover:text-emerald-900 transition-colors">
                   关于我

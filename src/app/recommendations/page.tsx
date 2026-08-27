@@ -34,7 +34,7 @@ export default function RecommendationsPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-medium text-emerald-950 mb-4">主厨推荐</h1>
+      <h1 className="text-3xl font-medium text-emerald-950 mb-4">推荐</h1>
       <p className="text-stone-600 mb-8">
         点进作品界面后请注意查看 tag 以及预警，以防踩雷。<br />
         祝吃好喝好！
