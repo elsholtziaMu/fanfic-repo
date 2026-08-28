@@ -67,13 +67,17 @@ public/content/works/
 
 ### download-comments.js（`npm run download-comments`）
 
-从评论服务拉取全部留言并覆写本地 `data/comments.json`：
+从 Cloudflare Worker 评论服务拉取全部留言并覆写本地 `data/comments.json`，用于灾备和留档。
 
 ```bash
+# 直连(仅线上部署环境或境外服务器可用)
 npm run download-comments
+
+# 本机开发环境(workers.dev 在国内被墙,需走系统代理)
+HTTPS_PROXY=http://127.0.0.1:7897 npm run download-comments
 ```
 
-API 地址取自环境变量 `NEXT_PUBLIC_API_URL`（定义在 `.env.production` / `.env.development`），用于灾备和留档。
+> **国内访问提示**：评论 API 部署在 Cloudflare Workers 的 `workers.dev` 域名，国内被 DNS 污染 + SNI 阻断。脚本会自动读取 `HTTPS_PROXY` / `HTTP_PROXY` 环境变量并通过 `curl -x` 走代理；失败时会打印明确的代理配置指引。netlify 线上部署版服务器在境外，直连可用，无需代理。
 
 ## 发布新作品流程
 
