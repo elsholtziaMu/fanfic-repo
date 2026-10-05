@@ -38,6 +38,11 @@ function stripNotionHeader(html) {
   });
 }
 
+// 移除 body 内的 Notion 导出引用块（作品简介），内容与 meta.json 重复。
+function stripBlockquotes(html) {
+  return html.replace(/<blockquote\b[^>]*>[\s\S]*?<\/blockquote>/gi, '');
+}
+
 function findStyleBlocks(html) {
   const blocks = [];
   const blockRegex = /<style\b[^>]*>([\s\S]*?)<\/style>/gi;
@@ -63,7 +68,7 @@ function cleanAll() {
   // 第一遍：读取所有文件，移除 Notion 页头，收集样式块
   const docs = files.map(file => {
     const original = fs.readFileSync(file, 'utf8');
-    const headerStripped = stripNotionHeader(original);
+    const headerStripped = stripBlockquotes(stripNotionHeader(original));
     return { file, original, html: headerStripped, blocks: findStyleBlocks(headerStripped) };
   });
 

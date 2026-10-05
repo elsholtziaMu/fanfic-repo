@@ -5,12 +5,19 @@
 :root {
   --foreground-rgb: 36, 36, 36;
   --background-rgb: 245, 242, 235;
+  /* 字体栈：系统字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont,
+    'PingFang SC', 'Hiragino Sans GB', 'Source Han Sans SC',
+    'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  --font-serif: 'Noto Serif CJK SC',
+    'Source Han Serif SC', 'Songti SC', 'STSong', serif;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
   user-select: none;
+  font-family: var(--font-sans);
 }
 
 input, textarea {

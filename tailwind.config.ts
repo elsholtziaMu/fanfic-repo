@@ -16,7 +16,12 @@ const config: Config = {
     'bg-teal-100', 'text-teal-800', 'border-teal-300',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
+      },
+    },
   },
   plugins: [],
 }
