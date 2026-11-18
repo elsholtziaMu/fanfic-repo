@@ -400,7 +400,7 @@
     },
     "wordCount": 40482,
     "createdAt": "2026-01-27",
-    "updatedAt": "2026-10-05",
+    "updatedAt": "2026-11-19",
     "chapters": [
       {
         "id": "趁人之危-ch-001",
@@ -410,7 +410,7 @@
         "beginNote": "",
         "endNote": "",
         "wordCount": 4560,
-        "updatedAt": "2026-10-05"
+        "updatedAt": "2026-11-19"
       },
       {
         "id": "趁人之危-ch-002",
@@ -420,7 +420,7 @@
         "beginNote": "",
         "endNote": "",
         "wordCount": 5923,
-        "updatedAt": "2026-10-05"
+        "updatedAt": "2026-11-19"
       },
       {
         "id": "趁人之危-ch-003",
@@ -430,7 +430,7 @@
         "beginNote": "",
         "endNote": "",
         "wordCount": 12730,
-        "updatedAt": "2026-10-05"
+        "updatedAt": "2026-11-19"
       },
       {
         "id": "趁人之危-ch-004",
@@ -440,7 +440,7 @@
         "beginNote": "",
         "endNote": "",
         "wordCount": 11807,
-        "updatedAt": "2026-10-05"
+        "updatedAt": "2026-11-19"
       },
       {
         "id": "趁人之危-ch-005",
@@ -450,7 +450,7 @@
         "beginNote": "",
         "endNote": "",
         "wordCount": 5462,
-        "updatedAt": "2026-10-05"
+        "updatedAt": "2026-11-19"
       }
     ]
   },
